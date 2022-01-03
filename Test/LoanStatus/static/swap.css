@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #03a9f4;
+  transition: 0.5s;
+}
+
+.container {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  margin: 20px;
+}
+
+.firstbg {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 40px;
+  width: 100%;
+  height: 420px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.15);
+}
+
+.firstbg .box {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.firstbg .box h2 {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.firstbg .box button {
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 40px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+}
+
+.formBx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  z-index: 1000;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.25);
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.formBx.active {
+  left: 50%;
+}
+
+body.active {
+  background: #03a9f4;
+}
+
+.formBx .form {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 50px;
+  transition: 0.5s;
+}
+
+.formBx.active .signinform {
+  left: -100%;
+  transition-delay: 0s;
+}
+
+.formBx .signinform {
+  transition-delay: 0.25s;
+}
+
+.formBx .signupform {
+  left: 100%;
+  transition-delay: 0s;
+}
+
+.formBx.active .signupform {
+  left: 0;
+  transition-delay: 0.25s;
+}
+
+.formBx .form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.formBx .form form h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.formBx .form form input {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 40px;
+  padding: 10px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #333;
+}
+
+.formBx .form form input[type="submit"] {
+  background: #03a9f4;
+  border: none;
+  color: #fff;
+  max-width: 100px;
+  cursor: pointer;
+}
+
+.formBx .form form .forget {
+  color: #333;
+}
+
+.formBx.active .signupform input[type="submit"] {
+  background: #03a9f4;
+}
+
+@media (max-width: 990px) {
+  .container {
+    max-width: 400px;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container .firstbg {
+    top: 0;
+    height: 100%;
+  }
+  .formBx {
+    width: 100%;
+    height: 500px;
+    top: 0;
+    box-shadow: none;
+  }
+  .firstbg .box {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    bottom: 0;
+  }
+  .box.signin {
+    top: 0;
+  }
+  .formBx.active {
+    left: 0;
+    top: 150px;
+  }
+}
+
+.svg-icon {
+  width: 6em;
+  height: 6em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #03a9f4;
+}
+
+.svg-icon circle {
+  stroke: #03a9f4;
+  stroke-width: 1;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.bg {
+  background-color: rgb(18, 27, 27);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #03a9f4;
+  transition: 0.5s;
+}
+
+.adminform h3 {
+  font-size: 1.7em;
+  margin-bottom: 10px;
+}
+
+.adminform {
+  position: absolute;
+  top: center;
+  left: center;
+  width: 22%;
+  height: 58%;
+  background: #fff;
+  z-index: 1000;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.25);
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.adminform input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 40px;
+  padding: 10px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #333;
+}
+
+.adminform .sub input {
+  cursor: pointer;
+  padding: 10px 10px;
+  width: 50%;
+  margin-bottom: 20px;
+  background: #03a9f4;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+}
