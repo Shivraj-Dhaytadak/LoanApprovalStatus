@@ -3,12 +3,12 @@ from flask import Flask, request, jsonify,render_template
 import pickle 
  
 app = Flask(__name__)
-model = pickle.load(open('model.pkl','rb'))
+model = pickle.load(open('model1.pkl','rb'))
 
 
 @app.route('/')
 def home():
-    return render_template('Application.html')
+    return render_template('LoanApply.html')
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -19,7 +19,7 @@ def predict():
 
     output = round(prediction[0], 2)
 
-    return render_template('Application.html', prediction_text='PROBABILITY THAT YOUR LOAN WILL GET APPROVED IS ; {}'.format(output))
+    return render_template('LoanApply.html', prediction_text='PROBABILITY THAT YOUR LOAN WILL GET APPROVED IS ; {}'.format(output))
 
 @app.route('/results',methods=['POST'])
 def results():
