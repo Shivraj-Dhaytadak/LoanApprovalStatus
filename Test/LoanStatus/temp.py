@@ -67,8 +67,12 @@ def predict():
     prediction = model.predict(final_features)
 
     output = round(prediction[0], 2)
+    if(output == 0):
+        result = "Approved"
+    else:
+        result = "Rejected"
 
-    return render_template('LoanApply.html', prediction_text='PROBABILITY THAT YOUR LOAN WILL GET APPROVED IS ; {}'.format(output))
+    return render_template('LoanApply.html', prediction_text='Your Loan Appication is {}'.format(result))
 
 
 @app.route("/userlogin", methods=["POST", "GET"])
