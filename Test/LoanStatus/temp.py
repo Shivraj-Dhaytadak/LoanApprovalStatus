@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import bcrypt
+import pickle
+import numpy as np
 app = Flask(__name__)
+model = pickle.load(open('model.pkl', 'rb'))
 app.secret_key = "6042d70a-20c4-4049-a6dc-e9a244903532"
 client = pymongo.MongoClient("mongodb+srv://flaskloan:flaskloan@cluster0.ogg9d.mongodb.net/login?ssl=true&ssl_cert_reqs=CERT_NONE")
 db = client.get_database('login')
@@ -49,6 +52,24 @@ def userDashboard():
         return render_template('userDashboard.html', email=email)
     else:
         return redirect(url_for("userLogin"))
+
+@app.route('/loanapply')
+def loanapply():
+    if "email" in session:
+        email = session["email"]
+        return render_template('LoanApply.html')
+
+@app.route('/applyforloan',methods=['POST','GET'])
+def predict():
+
+    int_features = [int(x) for x in request.form.values()]
+    final_features = [np.array(int_features)]
+    prediction = model.predict(final_features)
+
+    output = round(prediction[0], 2)
+
+    return render_template('LoanApply.html', prediction_text='PROBABILITY THAT YOUR LOAN WILL GET APPROVED IS ; {}'.format(output))
+
 
 @app.route("/userlogin", methods=["POST", "GET"])
 def userlogin():
