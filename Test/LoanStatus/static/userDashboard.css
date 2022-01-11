@@ -13,7 +13,7 @@ body {
   width: 240px;
   left: -240px;
   height: 100%;
-  background: #7f6adf;
+  background: #03a9f4;
   transition: all .5s ease;
 }
 .sidebar header{
@@ -21,7 +21,7 @@ body {
   color: white;
   line-height: 70px;
   text-align: center;
-  background: #4b2ecc;
+  background: #5036c7;
   user-select: none;
   font-family: 'Montserrat', sans-serif;
 }
@@ -62,10 +62,10 @@ label #btn,label #cancel{
   cursor: pointer;
   color: white;
   border-radius: 5px;
-  border: 1px solid #7f6adf;
+  border: 1px solid #03a9f4;
   margin: 15px 30px;
   font-size: 29px;
-  background: #7f6adf;
+  background: #03a9f4;
   height: 45px;
   width: 45px;
   text-align: center;
@@ -132,8 +132,12 @@ label #cancel{
   margin-bottom: 0 !important;
   z-index: 2;
 }
+/* nav .btn {
+  cursor: pointer;
+  color: white;
+} */
 nav{
-  background: #7f6adf;
+  background: #03a9f4;
   padding: 5px 40px;
   position: fixed;
   width: 100%;
@@ -148,6 +152,8 @@ nav ul{
 nav ul li{
   padding: 15px 0;
   cursor: pointer;
+  
+  color: white;
 }
 nav ul li.items{
   position: relative;
@@ -224,7 +230,7 @@ nav ul li.btn.hide i:before{
 .sidebar .bottom {
   position: absolute;
   left: 9% ;
-  bottom: 10%;
+  bottom: 9%;
   text-shadow: #33ffff;
   color: white;
 }
