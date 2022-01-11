@@ -220,3 +220,11 @@ nav ul li.btn.hide i:before{
     opacity: 0;
   }
 }
+
+.sidebar .bottom {
+  position: absolute;
+  left: 9% ;
+  bottom: 10%;
+  text-shadow: #33ffff;
+  color: white;
+}
