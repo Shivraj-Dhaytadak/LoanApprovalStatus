@@ -41,21 +41,21 @@
   width: 100%;
 }
 .hdg a {
-  cursor: help;
+  cursor: alias;
 }
 
 #apply {
   font-size: 2.6em;
   width: 100%;
   padding : 10px 10px 10px 0px;
-  cursor: help;
+  cursor: alias;
 }
 
 #requireddocs {
   font-size: 1.6em;
   width: 100%;
   padding : 20px 10px 10px 0px;
-  cursor: help;
+  cursor: default;
 }
 
 .tag {
