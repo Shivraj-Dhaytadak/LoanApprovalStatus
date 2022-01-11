@@ -10,7 +10,7 @@ body {
 }
 .sidebar{
   position: fixed;
-  top: 84px;
+  top: 72px;
   width: 240px;
   left: -240px;
   height: 100%;
@@ -144,6 +144,7 @@ nav{
   padding: 5px 40px;
   position: fixed;
   width: 100%;
+  height: 7.4%;
 }
 nav ul{
   list-style: none;
@@ -187,6 +188,7 @@ nav ul li.logo{
   font-weight: 600;
   cursor: default;
   user-select: none;
+  cursor: pointer;
 }
 nav ul li a{
   color: white;
