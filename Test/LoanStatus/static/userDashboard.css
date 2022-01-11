@@ -233,8 +233,8 @@ nav ul li.btn.hide i:before{
 
 .sidebar .bottom {
   position: absolute;
-  left: 9% ;
-  bottom: 9%;
+  left: 0% ;
+  bottom: 8%;
   text-shadow: #33ffff;
   color: rgba(255, 255, 255, 0.76);
   cursor: default;
