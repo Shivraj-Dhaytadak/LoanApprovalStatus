@@ -1,5 +1,5 @@
 # converting numerical data to ordinal 
-Profession ={'Technology_specialist': 1,
+Profession = {'Technology_specialist': 1,
  'Petroleum_Engineer': 2,
  'Industrial_Engineer': 3,
  'Economist': 4,
@@ -397,4 +397,30 @@ STATE = {'Sikkim': 1,
  'Kerala': 27,
  'Tripura': 28,
  'Manipur': 29}
-print(STATE)
+Married = { 'Married':0 , 'Single':1}
+House = {'Neither Rented Nor Owned':0,'Owned':1,'rented':2}
+Car = {'no':0,'yes':1}
+def GetMarried(val):
+   for key, value in Married.items():
+      if val == value:
+         return key
+def GetHouse(val):
+   for key, value in House.items():
+      if val == value:
+         return key
+def GetCar(val):
+   for key, value in Car.items():
+      if val == value:
+         return key
+def GetState(val):
+   for key, value in STATE.items():
+      if val == value:
+         return key
+def GetCity(val):
+   for key, value in CITY.items():
+      if val == value:
+         return key
+def GetProfession(val):
+   for key, value in Profession.items():
+      if val == value:
+         return key
