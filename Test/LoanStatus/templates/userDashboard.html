@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/Test/LoanStatus/static/userDashboard.css">
+    <link rel="stylesheet" href="/Test/LoanStatus/static/bodypart.css">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -14,6 +15,7 @@
 </head>
 
 <body>
+    <!-- this is navbar -->
     <div class="navbar">
         <nav>
             <ul>
@@ -48,7 +50,7 @@
     </div>
 
 
-    <!-- booty -->
+    <!-- bootstrap -->
 
     <div class="container">
         <h2>Insights</h2>
@@ -94,15 +96,13 @@
             </a>
         </div>
 
+        <!-- bootstrap edn -->
+
         <div class="col-lg-5">
             <h4 class="hd6 MT30 os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay=".1s" style="animation-delay: 0.1s;">
                 ELIGIBILITY</h4>
             <div class="accordian op1">
-                <div class="trgr os-animation animated fadeInUp act" data-os-animation="fadeInUp" data-os-animation-delay=".2s" style="animation-delay: 0.2s;">Who can apply?</div>
-                <div class="tog_cont" style="">
-
-
-
+                
                     <p class="hdg">Want to apply for home loan online? Check home loan eligibility mentioned below: </p>
                     <ul>
 
@@ -111,47 +111,51 @@
                     <p class="PT10">
                         <a data-analytics="eligiblity" class="link-txt"></a>
                     </p>
-
-
-                    <p class="hdg">For Self-Employed Individuals:</p>
-                    <ul>
-
-
-
-                        <li>Resident Indians only</li>
-
-                        <li>Aged between 23-70 years</li>
-
-                        <li>Minimum 4 years of business continuity</li>
-
-                        <li>Must earn minimum ₹1.5 lakh per annum</li>
-
-                        <li>Tenure duration 12 months - 300 months</li>
+                <!-- <div class="trgr os-animation animated fadeInUp act" data-os-animation="fadeInUp" data-os-animation-delay=".2s" style="animation-delay: 0.2s;">Who can apply?</div> -->
+                <div class="tog_cont">
 
 
 
-                    </ul>
 
-                    <p class="PT10">
-                        <a data-analytics="eligiblity" class="link-txt"></a>
-                    </p>
+                    <div id="self-employed">
+                        <p class="hdg">For Self-Employed Individuals:</p>
+                        <ul>
+    
+                            <li>Resident Indians only</li>
+    
+                            <li>Aged between 23-70 years</li>
+    
+                            <li>Minimum 4 years of business continuity</li>
+    
+                            <li>Must earn minimum ₹1.5 lakh per annum</li>
+    
+                            <li>Tenure duration 12 months - 300 months</li>
+    
+                        </ul>
+    
+                        <p class="PT10">
+                            <a data-analytics="eligiblity" class="link-txt btn btn-primary">Apply</a>
+                        </p>
+                    </div>
+                    
+                    <div id="salaried">
+                        <p class="hdg">For Salaried Individuals:</p>
+                        <ul>
+                            <li>Resident &amp; Non-Resident Indians</li>
 
+                            <li>Aged between 21-60 years</li>
 
-                    <p class="hdg">For Salaried Individuals:</p>
-                    <ul>
-                        <li>Resident &amp; Non-Resident Indians</li>
+                            <li>Minimum 3 years of experience</li>
 
-                        <li>Aged between 21-60 years</li>
+                            <li>Must earn minimum ₹1 lakh per annum</li>
 
-                        <li>Minimum 3 years of experience</li>
+                            <li>Tenure duration 12 months – 360 months</li>
+                        </ul>
+                        <p class="PT10">
+                            <a data-analytics="eligiblity" class="link-txt btn btn-primary">Apply</a>
+                        </p>
+                    </div>
 
-                        <li>Must earn minimum ₹1 lakh per annum</li>
-
-                        <li>Tenure duration 12 months – 360 months</li>
-                    </ul>
-                    <p class="PT10">
-                        <a data-analytics="eligiblity" class="link-txt"></a>
-                    </p>
                 </div>
 
                 <div class="trgr os-animation animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay=".2s" style="animation-delay: 0.2s;">Documentation required for home loan</div>
