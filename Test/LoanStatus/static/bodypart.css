@@ -1,0 +1,64 @@
+.tog_cont {
+  display: flex;
+  width: 1100px;
+  /* border: 2px solid black; */
+  justify-content: space-around;
+}
+
+#self-employed {
+  border: 2px solid black;
+  padding: 30px;
+  border-radius: 10px;
+  font-size: 2rem;
+  background-color: #089fe6;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.849);
+}
+
+#salaried li, #self-employed li {
+  color: white;
+}
+
+#salaried p , #self-employed p{
+  font-size: 1em;
+  font-weight: 100;
+}
+#salaried {
+  border: 2px solid black;
+  padding: 30px;
+  border-radius: 10px;
+  font-size: 2rem;
+  background-color: #089fe6;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.849);
+}
+
+.col-lg-5 h4{
+  font-size: 3em;
+  width: 100%;
+  display: block;
+}
+.hdg {
+  font-size: 16px;
+  width: 100%;
+}
+.hdg a {
+  cursor: alias;
+}
+
+#apply {
+  font-size: 2.6em;
+  width: 100%;
+  padding : 10px 10px 10px 0px;
+  cursor: alias;
+}
+
+#requireddocs {
+  font-size: 1.6em;
+  width: 100%;
+  padding : 20px 10px 10px 0px;
+  cursor: default;
+}
+
+.tag {
+  display: flex;
+  justify-content: center;
+}
