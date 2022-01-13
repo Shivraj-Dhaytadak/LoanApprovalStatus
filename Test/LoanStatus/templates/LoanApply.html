@@ -3,16 +3,54 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="static/style.css">
-    <title>loan app</title>
+    <link rel="stylesheet" href="static/userDashboard.css">
+    <link rel="stylesheet" href="static/bodypart.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
 </head>
 
 <body>
+    <!-- this is navbar -->
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li class="logo"> <i class="fa fa-university" aria-hidden="true"></i> Bank</li>
+                <!-- Nantar logo taku saddya rau de class logo-->
+                <li class="items"><a href="/userDashboard"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
+                <li class="items"><a href="/loanapply"><i class="fa fa-check-circle fa-xs" aria-hidden="true"></i> Apply</a></li>
+                <li class="items"> <a href="/logout"><i class="fa fa-power-off fa-xs"></i> Logout</a> </i>
 
+        </nav>
+    </div>
+    <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars " id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+        <header>Welcome</header>
+        <a href="#" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
+        <!-- Nantar class inactive varun active krjo jeva sab hoin-->
+        <a href="#"><i class="fas fa-calendar"></i><span>Check status</span></a>
+        <a href="#"><i class="far fa-envelope"></i><span>Contact Us</span></a>
+        <a href="#"><i class="far fa-question-circle"></i><span>About</span></a>
+        <a href="/userDashboard#docs"><i class="fa fa-book" aria-hidden="true"></i><span>Required Docs</span></a>
+        <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span></a>
+
+        <div class="bottom">
+            <ul class="fa-ul">
+                <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li>
+                <!--spinning object-->
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- bootstrap -->
     <div class="container main">
         <div class="jumbotron" id="holder">
             <br>
@@ -20,27 +58,46 @@
             <br>
             <br>
             <center>
-                <h1 class='main_heading'> Loan Application</h1>
+                <h1 class='main_heading'>Loan Application</h1>
             </center>
-            <p>This Web Based Application is processed by a Machine Learning Algorithm to process the application applied online </p>
             <br>
 
             <form class="form-horizontal" action="/applyforloan" method="post">
-
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4> Applicant's Full Name </h4>
+                        <input class="form-control" type="text" name="fullname" placeholder="Your Full Name" required="required" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <h4>Applicant's Email</h4>
+                        <input class="form-control" type="email" name="email" placeholder="Your email" required="required" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <h4>Loan Amount in Rupees </h4>
+                        <input class="form-control" type="text" name="LoanAmount" placeholder="Loan Amount" required="required" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <h4>Applicant's Current Income in Rupees </h4>
                         <input class="form-control" type="text" name="Income" placeholder="Your Income" required="required" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's Age</h4>
                         <input class="form-control" type="number" name="age" placeholder="Your Age" required="required" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's experience</h4>
                         <input class="form-control" type="number" name="Experience" placeholder="Your Field Experience" required="required" />
                     </div>
                 </div>
@@ -48,6 +105,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's Marital Status</h4>
                         <select class="form-control" type="number" name="Married/Single" Placeholder="Marital status" required="required">
                             <option value="0">Married</option>
                             <option value="1">Single</option>
@@ -57,6 +115,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's House Ownership</h4>
                         <select class="form-control" type="number" name="House_Ownership" Placeholder="House_Ownership" required="required">
                       <option value="0">Neither Rented Nor Owned</option>
                       <option value="1">Owned</option>
@@ -67,6 +126,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's Car Ownership</h4>
                         <select class="form-control" type="number" name="Car_Ownership" Placeholder="Car_Ownership" required="required">
                       <option value="0">no</option>
                       <option value="1">yes</option>
@@ -76,6 +136,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's Current Profession</h4>
                         <select class="form-control" type="number" name="Profession" Placeholder="Profession" required="required">
                       <option value="1">Technology_specialist</option>
                       <option value="2">Petroleum_Engineer</option>
@@ -134,6 +195,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's Current City</h4>
                         <select class="form-control" type="number" name="City" Placeholder=" Current City" required="required">
                         <option value="1">Gandhinagar</option>
                         <option value="2">Dehradun</option>
@@ -461,6 +523,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's Current State</h4>
                         <select class="form-control" type="number" name="STATE" Placeholder=" Current State" required="required">
                       <option value="1">Sikkim</option>
                       <option value="2">Uttarakhand</option>
@@ -497,11 +560,13 @@
 
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's Current job Profession years</h4>
                         <input class="form-control" type="number" name="Current_Job_yrs" placeholder="Current Job Yrs" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-10">
+                        <h4>Applicant's Current House Ownership Years</h4>
                         <input class="form-control" type="number" name="Current_House_yrs" placeholder="Current House Yrs" required="required" />
                     </div>
                 </div>
@@ -518,6 +583,16 @@
         </div>
     </div>
 
+
+    <!-- <footer class="tag">
+    <ul class="fa-ul">
+        <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li>
+    </ul>
+</footer> -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>
