@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/Test/LoanStatus/static/userDashboard.css">
-    <link rel="stylesheet" href="/Test/LoanStatus/static/bodypart.css">
-    
+    <link rel="stylesheet" href="static/userDashboard.css">
+    <link rel="stylesheet" href="static/bodypart.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -22,7 +22,7 @@
                 <!-- Nantar logo taku saddya rau de class logo-->
                 <li class="items"><a href="#"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
                 <li class="items"><a href="/loanapply"><i class="fa fa-check-circle fa-xs" aria-hidden="true"></i> Apply</a></li>
-                <li class="items"> <a href="/logout"><i class="fa fa-power-off fa-xs"></i> Logout</a> </i></li>
+                <li class="items"> <a href="/logout"><i class="fa fa-power-off fa-xs"></i> Logout</a> </li>
             </ul>
         </nav>
     </div>
@@ -42,10 +42,11 @@
         <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span></a>
 
         <div class="bottom">
-        <ul class="fa-ul">
-            <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li> <!--spinning object-->
-        </ul>
-      </div>
+            <ul class="fa-ul">
+                <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li>
+                <!--spinning object-->
+            </ul>
+        </div>
     </div>
 
 
@@ -65,12 +66,12 @@
             <div class="carousel-inner">
 
                 <div class="item active">
-                    <img src="/Test/LoanStatus/static/2ndbanner.jpeg" alt="/Test/LoanStatus/static/firstbanner.jpeg" style="width:100%;">
+                    <img src="static/2ndbanner.jpeg" alt="/Test/LoanStatus/static/firstbanner.jpeg" style="width:100%;">
                     <div class="carousel-caption"></div>
                 </div>
 
                 <div class="item">
-                    <img src="/Test/LoanStatus/static/firstbanner.jpeg" style="width:100%;">
+                    <img src="static/firstbanner.jpeg" style="width:100%;">
                     <div class="carousel-caption">
                         <h3>Happy New Year</h3>
                         <p>keep the spirt</p>
@@ -78,7 +79,7 @@
                 </div>
 
                 <div class="item">
-                    <img src="/Test/LoanStatus/static/firstbanner.jpeg" alt="New York" style="width:100%;">
+                    <img src="static/firstbanner.jpeg" alt="New York" style="width:100%;">
                     <div class="carousel-caption"></div>
                 </div>
 
@@ -102,15 +103,15 @@
                 ELIGIBILITY
             </h4>
             <div class="headin">
-                
-                    <p class="hdg">Want to apply for home loan online?  Check home loan eligibility mentioned below for more <a href="#">click here</a> </p>
-                    <ul>
 
-                    </ul>
+                <p class="hdg">Want to apply for home loan online? Check home loan eligibility mentioned below for more <a href="#">click here</a> </p>
+                <ul>
 
-                    <p class="PT10">
-                        <a data-analytics="eligiblity" class="link-txt"></a>
-                    </p>
+                </ul>
+
+                <p class="PT10">
+                    <a data-analytics="eligiblity" class="link-txt"></a>
+                </p>
                 <div class="trgr os-animation animated fadeInUp act" id="apply" data-os-animation="fadeInUp" data-os-animation-delay=".2s" style="animation-delay: 0.2s;">Who can apply?</div>
                 <div class="tog_cont">
 
@@ -126,7 +127,7 @@
                         <p class="PT10">
                             <a data-analytics="eligiblity" class="link-txt btn btn-primary" href="/loanapply">Apply</a>
                         </p>
-                    </div>                 
+                    </div>
                     <div id="salaried">
                         <p class="hdg">For Salaried Individuals-</p>
                         <ul>
@@ -134,7 +135,7 @@
                             <li>Aged between 21-60 years</li>
                             <li>Minimum 3 years of experience</li>
                             <li>Must earn minimum ₹1 lakh per annum</li>
-                            <li>Tenure duration 12 months – 360 months</li>
+                            <li>Tenure duration 12 months to 360 months</li>
                         </ul>
                         <p class="PT10">
                             <a data-analytics="eligiblity" class="link-txt btn btn-primary" href="/loanapply">Apply</a>
@@ -143,7 +144,7 @@
 
                 </div>
 
-                <div class="trgr os-animation animated fadeInUp"  id="requireddocs" data-os-animation="fadeInUp" data-os-animation-delay=".2s" style="animation-delay: 0.2s;">Documentation required for home loan <a href="#" class="btn btn-primary">check</a></div>
+                <div class="trgr os-animation animated fadeInUp" id="requireddocs" data-os-animation="fadeInUp" data-os-animation-delay=".2s" style="animation-delay: 0.2s;">Documentation required for home loan <a href="#" class="btn btn-primary">check</a></div>
 
 
                 <!-- <div><h1>why the content below this div is not showing shivraj??</h1></div> -->
@@ -151,8 +152,10 @@
 
 
                 <!-- <div class="tog_cont" style="display: none;"> -->
-                <div class="bullets" id="docs">    
-                    <p class="hdg"> <h2>Take a look at the documents required for home loan process and keep them handy. </h2></p>
+                <div class="bullets" id="docs">
+                    <p class="hdg">
+                        <h2>Take a look at the documents required for home loan process and keep them handy. </h2>
+                    </p>
                     <ul>
 
                     </ul>
@@ -236,13 +239,13 @@
         </div>
     </div>
 
-<!-- <footer class="tag">
+    <!-- <footer class="tag">
     <ul class="fa-ul">
         <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li>
     </ul>
 </footer> -->
-   
-    
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
