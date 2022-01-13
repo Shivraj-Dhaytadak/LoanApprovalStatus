@@ -59,7 +59,7 @@ def userDashboard():
         return redirect(url_for("userLogin"))
 
 
-@app.route('/loanapply')
+@app.route('/loanapply', methods=['POST', 'GET'])
 def loanapply():
     if "email" in session:
         email = session["email"]
@@ -123,12 +123,12 @@ def logout():
         return render_template('userLogin.html')
 
 
-@app.route('/loadAdmin', methods=['POST'])
+@app.route("/loadAdmin", methods=['POST'])
 def loadAdmin():
-    return render_template('adminLogin.html')
+    return render_template("adminLogin.html")
 
 
-@app.route('/adminlogin', methods=['POST'])
+@app.route('/adminlogin', methods=['POST', 'GET'])
 def adminlogin():
     if request.method == "POST":
         email = request.form.get("admin[username]")
@@ -147,6 +147,14 @@ def adminlogin():
                 message = 'Wrong password'
                 return render_template('adminlogin.html', message=message)
 
+
+@app.route('/adminDashboard')
+def adminDashboard():
+    if "email" in session:
+        email = session["email"]
+        return render_template('adminDashboard.html', email=email)
+    else:
+        return redirect(url_for("adminLogin"))
 
 if __name__ == "__main__":
     app.run(debug=True)
