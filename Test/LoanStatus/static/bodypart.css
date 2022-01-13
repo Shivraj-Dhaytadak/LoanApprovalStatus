@@ -58,7 +58,12 @@
   cursor: default;
 }
 
+/* 
 .tag {
   display: flex;
   justify-content: center;
+} */
+
+#ded {
+  font-weight: 700;
 }

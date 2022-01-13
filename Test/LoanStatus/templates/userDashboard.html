@@ -36,8 +36,9 @@
         <a href="#" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
         <!-- Nantar class inactive varun active krjo jeva sab hoin-->
         <a href="#"><i class="fas fa-calendar"></i><span>Check status</span></a>
-        <a href="##"><i class="far fa-envelope"></i><span>Contact Us</span></a>
+        <a href="#"><i class="far fa-envelope"></i><span>Contact Us</span></a>
         <a href="#"><i class="far fa-question-circle"></i><span>About</span></a>
+        <a href="#docs"><i class="fa fa-book" aria-hidden="true"></i><span>Required Docs</span></a>
         <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span></a>
 
         <div class="bottom">
@@ -64,7 +65,7 @@
             <div class="carousel-inner">
 
                 <div class="item active">
-                    <img src="/Test/LoanStatus/static/firstbanner.jpeg" alt="Los Angeles" style="width:100%;">
+                    <img src="/Test/LoanStatus/static/2ndbanner.jpeg" alt="/Test/LoanStatus/static/firstbanner.jpeg" style="width:100%;">
                     <div class="carousel-caption"></div>
                 </div>
 
@@ -145,9 +146,13 @@
                 <div class="trgr os-animation animated fadeInUp"  id="requireddocs" data-os-animation="fadeInUp" data-os-animation-delay=".2s" style="animation-delay: 0.2s;">Documentation required for home loan <a href="#" class="btn btn-primary">check</a></div>
 
 
-                <div><h1>why the content below this div is not showing shivraj??</h1></div>
-                <div class="tog_cont" style="display: none;">
-                    <p class="hdg">Take a look at the documents required for home loan process and keep them handy.</p>
+                <!-- <div><h1>why the content below this div is not showing shivraj??</h1></div> -->
+
+
+
+                <!-- <div class="tog_cont" style="display: none;"> -->
+                <div class="bullets" id="docs">    
+                    <p class="hdg"> <h2>Take a look at the documents required for home loan process and keep them handy. </h2></p>
                     <ul>
 
                     </ul>
@@ -156,8 +161,14 @@
                         <a data-analytics="eligiblity" class="link-txt"></a>
                     </p>
 
-                    <p class="hdg">Valid Identity Proof</p>
-                    <ul>
+                    <p class="hdg" id="ded"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Valid Identity Proof</p>
+                    <ul class="fa-ul">
+
+                        <li><i class="fa-li fa fa-check-square"></i> Photocopy of draft sale deed and chain title documents (if any)</li>
+
+                        <li><i class="fa-li fa fa-check-square"></i> Allotment/Possession letter</li>
+
+                        <li><i class="fa-li fa fa-check-square"></i> No objection certificate from the society and other documents as per legal report</li>
 
                     </ul>
 
@@ -165,8 +176,14 @@
                         <a data-analytics="eligiblity" class="link-txt"></a>
                     </p>
 
-                    <p class="hdg">Valid Address Proof</p>
-                    <ul>
+                    <p class="hdg" id="ded"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Valid Address Proof</p>
+                    <ul class="fa-ul">
+
+                        <li><i class="fa-li fa fa-check-square"></i> Photocopy of draft sale deed and chain title documents (if any)</li>
+
+                        <li><i class="fa-li fa fa-check-square"></i> Allotment/Possession letter</li>
+
+                        <li><i class="fa-li fa fa-check-square"></i> No objection certificate from the society and other documents as per legal report</li>
 
                     </ul>
 
@@ -174,26 +191,11 @@
                         <a data-analytics="eligiblity" class="link-txt"></a>
                     </p>
 
-                    <p class="hdg">Valid Income Proof</p>
-                    <ul>
+                    <p class="hdg" id="ded"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Valid Income Proof</p>
+                    <ul class="fa-ul">
 
-                        <li>Salaried: Last 2 months salary slip/ latest ITR or Form 16/ last 6 months bank statement</li>
-                        <li>Self-employed : Latest ITR/ balance sheet or P&amp;L statement/ GST return/ last 6 months bank statements or CC statements, etc</li>
-
-                    </ul>
-
-                    <p class="PT10">
-                        <a data-analytics="eligiblity" class="link-txt"></a>
-                    </p>
-
-                    <p class="hdg">Property Proof</p>
-                    <ul>
-
-                        <li>Photocopy of draft sale deed and chain title documents (if any)</li>
-
-                        <li>Allotment/Possession letter</li>
-
-                        <li>No objection certificate from the society and other documents as per legal report</li>
+                        <li><i class="fa-li fa fa-check-square"></i>Salaried: Last 2 months salary slip/ latest ITR or Form 16/ last 6 months bank statement</li>
+                        <li><i class="fa-li fa fa-check-square"></i>Self-employed : Latest ITR/ balance sheet or P&amp;L statement/ GST return/ last 6 months bank statements or CC statements, etc</li>
 
                     </ul>
 
@@ -201,17 +203,39 @@
                         <a data-analytics="eligiblity" class="link-txt"></a>
                     </p>
 
-                    <p class="hdg">Business Proof (Click Know More for more details)</p>
-                    <ul>
+                    <p class="hdg" id="ded"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Property Proof</p>
+                    <ul class="fa-ul">
+
+                        <li><i class="fa-li fa fa-check-square"></i> Photocopy of draft sale deed and chain title documents (if any)</li>
+
+                        <li><i class="fa-li fa fa-check-square"></i> Allotment/Possession letter</li>
+
+                        <li><i class="fa-li fa fa-check-square"></i> No objection certificate from the society and other documents as per legal report</li>
 
                     </ul>
 
-                    <p class="PT10"><a data-analytics="eligiblity" href="/personal-banking/loans/home-loan/documentation" class="link-txt">Know More</a></p>
+                    <p class="PT10">
+                        <a data-analytics="eligiblity" class="link-txt"></a>
+                    </p>
+
+                    <p class="hdg" id="ded"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Business Proof</p>
+                    <ul class="fa-ul">
+
+                        <li><i class="fa-li fa fa-check-square"></i> Photocopy of draft sale deed and chain title documents (if any)</li>
+
+                        <li><i class="fa-li fa fa-check-square"></i> Allotment/Possession letter</li>
+
+                        <li><i class="fa-li fa fa-check-square"></i> No objection certificate from the society and other documents as per legal report</li>
+
+                    </ul>
+                    <p class="hdg" id="ded">(Click on "Know More" for more details)</p>
+                    <p class="PT10"><a data-analytics="eligiblity" href="/personal-banking/loans/home-loan/documentation" class="btn btn primary">Know More</a></p>
 
                 </div>
             </div>
         </div>
     </div>
+
 <!-- <footer class="tag">
     <ul class="fa-ul">
         <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li>
