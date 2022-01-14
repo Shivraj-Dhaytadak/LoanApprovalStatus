@@ -69,7 +69,8 @@ def loanapply():
 @app.route('/applyforloan', methods=['POST', 'GET'])
 def predict():
 
-    int_features = [int(x) for x in request.form.values()]
+    int_features = [request.form.get("Income"), request.form.get("age"), request.form.get("Experience"), request.form.get("Married/Single"), request.form.get("House_Ownership"), request.form.get(
+        "Car_Ownership"), request.form.get("Profession"), request.form.get("City"), request.form.get("STATE"), request.form.get("Current_Job_yrs"), request.form.get("Current_House_yrs")]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
 
@@ -78,7 +79,24 @@ def predict():
         result = "Approved"
     else:
         result = "Rejected"
-
+    ApplicationForCloud = {
+        "Fullname": request.form.get("fullname"),
+        "Email": request.form.get("email"),
+        "LoanAmount": request.form.get("LoanAmount"),
+        "Income": request.form.get("Income"),
+        "Age": request.form.get("age"),
+        "Experience": request.form.get("Experience"),
+        "Married/Single": Converter.GetMarried(request.form.get("Married/Single")),
+        "House_Ownership": Converter.GetHouse(request.form.get("House_Ownership")),
+        "Car_Ownership": Converter.GetCar(request.form.get("Car_Ownership")),
+        "Profession": Converter.GetProfession(request.form.get("Profession")),
+        "City": Converter.GetCity(request.form.get("City")),
+        "STATE": Converter.GetState(request.form.get("STATE")),
+        "Current_Job_yrs": request.form.get("Current_Job_yrs"),
+        "Current_House_yrs": request.form.get("Current_House_yrs"),
+        "Status": result
+    }
+    LoanApplication.insert_one(ApplicationForCloud)
     return render_template('LoanApply.html', prediction_text='Your Loan Appication is {}'.format(result))
 
 
