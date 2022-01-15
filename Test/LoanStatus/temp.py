@@ -86,12 +86,12 @@ def predict():
         "Income": request.form.get("Income"),
         "Age": request.form.get("age"),
         "Experience": request.form.get("Experience"),
-        "Married/Single": Converter.GetMarried(request.form.get("Married/Single")),
-        "House_Ownership": Converter.GetHouse(request.form.get("House_Ownership")),
-        "Car_Ownership": Converter.GetCar(request.form.get("Car_Ownership")),
-        "Profession": Converter.GetProfession(request.form.get("Profession")),
-        "City": Converter.GetCity(request.form.get("City")),
-        "STATE": Converter.GetState(request.form.get("STATE")),
+        "Married/Single": request.form.get("Married/Single"),
+        "House_Ownership": request.form.get("House_Ownership"),
+        "Car_Ownership": request.form.get("Car_Ownership"),
+        "Profession": request.form.get("Profession"),
+        "City": request.form.get("City"),
+        "STATE": request.form.get("STATE"),
         "Current_Job_yrs": request.form.get("Current_Job_yrs"),
         "Current_House_yrs": request.form.get("Current_House_yrs"),
         "Status": result
@@ -173,6 +173,7 @@ def adminDashboard():
         return render_template('adminDashboard.html', email=email)
     else:
         return redirect(url_for("adminLogin"))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
