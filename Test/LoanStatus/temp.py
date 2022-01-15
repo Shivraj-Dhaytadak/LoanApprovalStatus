@@ -66,6 +66,13 @@ def loanapply():
         return render_template('LoanApply.html')
 
 
+@app.route('/checkstatus', methods=['POST', 'GET'])
+def checkstatus():
+    if "email" in session:
+        email = session["email"]
+        return render_template('checkstatus.html')
+
+
 @app.route('/applyforloan', methods=['POST', 'GET'])
 def predict():
 
