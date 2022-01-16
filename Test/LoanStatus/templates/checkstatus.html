@@ -9,22 +9,140 @@
 </head>
 
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in value %}
-            <tr>
-                <td>{{row[0]}}</td>
-                <td>{{row[1]}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
 
-</html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="static/userDashboard.css">
+        <link rel="stylesheet" href="static/bodypart.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    </head>
+
+    <body>
+        <!-- this is navbar -->
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li class="logo"> <i class="fa fa-university" aria-hidden="true"></i> Bank</li>
+                    <!-- Nantar logo taku saddya rau de class logo-->
+                    <li class="items"><a href="#"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
+                    <li class="items"><a href="/loanapply"><i class="fa fa-check-circle fa-xs" aria-hidden="true"></i> Apply</a></li>
+                    <li class="items"> <a href="/logout"><i class="fa fa-power-off fa-xs"></i> Logout</a> </li>
+                </ul>
+            </nav>
+        </div>
+        <input type="checkbox" id="check">
+        <label for="check">
+      <i class="fas fa-bars " id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+        <div class="sidebar">
+            <header>Welcome</header>
+            <a href="#" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
+            <!-- Nantar class inactive varun active krjo jeva sab hoin-->
+            <a href="/checkstatus"><i class="fas fa-calendar"></i><span>Check status</span></a>
+            <a href="#"><i class="far fa-envelope"></i><span>Contact Us</span></a>
+            <a href="#"><i class="far fa-question-circle"></i><span>About</span></a>
+            <a href="#docs"><i class="fa fa-book" aria-hidden="true"></i><span>Required Docs</span></a>
+            <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span></a>
+
+            <div class="bottom">
+                <ul class="fa-ul">
+                    <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li>
+                    <!--spinning object-->
+                </ul>
+            </div>
+        </div>
+        <div class="container main">
+
+            <table class="dataTable">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Application</th>
+                        <th>Loan Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#">000000001</a></td>
+                        <td>Dr. Jayhawk</td>
+                        <td>102</td>
+                        <td>03/30/1940</td>
+                        <td>$60.42</td>
+                        <td>PAID</td>
+                        <td>
+                            <button class="button action">Select</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">000000002</a></td>
+                        <td>Dr. Jayhawk</td>
+                        <td>137</td>
+                        <td>03/18/1953</td>
+                        <td>$69.68</td>
+                        <td>PAID</td>
+                        <td>
+                            <button class="button action">Select</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">000000003</a></td>
+                        <td>Dr. Wolverine Longer Text Test</td>
+                        <td>154</td>
+                        <td>03/29/1976</td>
+                        <td>$86.68</td>
+                        <td>PAID</td>
+                        <td>
+                            <button class="button action">Select</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">000000004</a></td>
+                        <td>Dr. Tarheel</td>
+                        <td>113</td>
+                        <td>03/30/1981</td>
+                        <td>$63.50</td>
+                        <td>PAID</td>
+                        <td>
+                            <button class="button action">Select</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">000000005</a></td>
+                        <td>Dr. Orange</td>
+                        <td>147</td>
+                        <td>03/30/1987</td>
+                        <td>$74.73</td>
+                        <td>PAID</td>
+                        <td>
+                            <button class="button action">Select</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">000000006</a></td>
+                        <td>Dr. Who</td>
+                        <td>000</td>
+                        <td>04/08/2013</td>
+                        <td>$0.00</td>
+                        <td>PENDING</td>
+                        <td>
+                            <button class="button action">Select</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </body>
+
+    </html>
