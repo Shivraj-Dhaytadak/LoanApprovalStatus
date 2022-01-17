@@ -70,6 +70,17 @@ def loanapply():
 def checkstatus():
     if "email" in session:
         email = session["email"]
+        email_found = LoanApplication.find_one({"email": email})
+        if email_found:
+            Loandetails = {
+                "Fullname": email_found['Fullname'],
+                "Email": email_found['Email'],
+                "Income":  email_found['Income'],
+                "Experince": email_found['Experience'],
+                "LoanAmount": email_found['LoanAmount'],
+                "Status": email_found['Status']
+            }
+            return render_template('checkstatus.html', Loan=Loandetails)
         return render_template('checkstatus.html')
 
 
