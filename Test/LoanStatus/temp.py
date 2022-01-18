@@ -66,6 +66,21 @@ def loanapply():
         return render_template('LoanApply.html')
 
 
+@app.route('/checkstatus', methods=['POST', 'GET'])
+def checkstatus():
+    if "email" in session:
+        email = session["email"]
+        email_found = LoanApplication.find_one({"Email": email})
+        Loandetails = {
+                "Fullname": email_found['Fullname'],
+                "Email": email_found['Email'],
+                "Income":  email_found['Income'],
+                "LoanAmount": email_found['LoanAmount'],
+                "Status": email_found['Status']
+            }
+        return render_template('checkstatus.html', Loan=Loandetails)
+
+
 @app.route('/applyforloan', methods=['POST', 'GET'])
 def predict():
 

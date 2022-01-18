@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="static/userDashboard.css">
+        <link rel="stylesheet" href="static/bodypart.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    </head>
+
+    <body>
+        <!-- this is navbar -->
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li class="logo"> <i class="fa fa-university" aria-hidden="true"></i> Bank</li>
+                    <!-- Nantar logo taku saddya rau de class logo-->
+                    <li class="items"><a href="#"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
+                    <li class="items"><a href="/loanapply"><i class="fa fa-check-circle fa-xs" aria-hidden="true"></i> Apply</a></li>
+                    <li class="items"> <a href="/logout"><i class="fa fa-power-off fa-xs"></i> Logout</a> </li>
+                </ul>
+            </nav>
+        </div>
+        <input type="checkbox" id="check">
+        <label for="check">
+      <i class="fas fa-bars " id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+        <div class="sidebar">
+            <header>Welcome</header>
+            <a href="#" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
+            <!-- Nantar class inactive varun active krjo jeva sab hoin-->
+            <a href="/checkstatus"><i class="fas fa-calendar"></i><span>Check status</span></a>
+            <a href="#"><i class="far fa-envelope"></i><span>Contact Us</span></a>
+            <a href="#"><i class="far fa-question-circle"></i><span>About</span></a>
+            <a href="#docs"><i class="fa fa-book" aria-hidden="true"></i><span>Required Docs</span></a>
+            <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span></a>
+
+            <div class="bottom">
+                <ul class="fa-ul">
+                    <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li>
+                    <!--spinning object-->
+                </ul>
+            </div>
+        </div>
+        <div class="container main">
+
+            <table class="dataTable">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Income</th>
+                        <th>Loan Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{Loan['Fullname']}}</td>
+                        <td>{{Loan['Email']}}</td>
+                        <td>{{Loan['Income']}}</td>
+                        <td>{{Loan['LoanAmount']}}</td>
+                        <td>{{Loan['Status']}}</td>
+                        <td></td>
+                        <td>
+                            <button class="button action">Select</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </body>
+
+    </html>
