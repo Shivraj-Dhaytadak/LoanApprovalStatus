@@ -555,7 +555,7 @@ def predict():
         "Status": result
     }
     LoanApplication.insert_one(ApplicationForCloud)
-    return render_template('LoanApply.html', prediction_text='Your Loan Appication is {}'.format(Profession))
+    return render_template('LoanApply.html', prediction_text='Your Loan Appication is {}'.format(result))
 
 
 @app.route("/userlogin", methods=["POST", "GET"])
