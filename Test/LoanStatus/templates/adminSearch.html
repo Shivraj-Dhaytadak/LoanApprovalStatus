@@ -54,6 +54,37 @@
                 </ul>
             </div>
         </div>
+        <div class="container main">
+            <form action="/applicationsearch" method="POST">
+                <h3>Search for Application by Email</h3>
+                <input type="text" placeholder="Email" name="email">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <table class="dataTable">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Income</th>
+                    <th>Loan Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{Loan['Fullname']}}</td>
+                    <td>{{Loan['Email']}}</td>
+                    <td>{{Loan['Income']}}</td>
+                    <td>{{Loan['LoanAmount']}}</td>
+                    <td>{{Loan['Status']}}</td>
+                    <td>
+                        <form action="POST"><button>Confirm</button></form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 
     </html>

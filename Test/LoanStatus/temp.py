@@ -195,10 +195,28 @@ def adminlogin():
 def adminDashboard():
     if "email" in session:
         email = session["email"]
-        return render_template('adminDashboard.html', email=email)
+        admin_found = Adminrecord.find_one({"email": email})
+        email_val = admin_found['email']
+        return render_template('adminDashboard.html', email=email_val)
     else:
         return redirect(url_for("adminLogin"))
 
 
+@app.route('/applicationsearch', methods=['POST', 'GET'])
+def applicationsearch():
+    Loandetails1 = {}
+    if request.method == "POST":
+        email = request.form.get("email")
+        email_found = LoanApplication.find_one({"Email": email})
+        Loandetails = {
+            "Fullname": email_found['Fullname'],
+            "Email": email_found['Email'],
+            "Income":  email_found['Income'],
+            "LoanAmount": email_found['LoanAmount'],
+            "Status": email_found['Status']
+        }
+        return render_template('adminSearch.html', Loan=Loandetails)
+    else:
+        return render_template('adminSearch.html', Loan=Loandetails1)
 if __name__ == "__main__":
     app.run(debug=True)
