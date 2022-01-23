@@ -404,37 +404,37 @@ Car = {'no': 0, 'yes': 1}
 
 def GetMarried(val):
     for key, value in Married.items():
-        if val == value:
+        if int(val) == value:
             return key
 
 
 def GetHouse(val):
     for key, value in House.items():
-        if val == value:
+        if int(val) == value:
             return key
 
 
 def GetCar(val):
     for key, value in Car.items():
-        if val == value:
+        if int(val) == value:
             return key
 
 
 def GetState(val):
     for key, value in STATE.items():
-        if val == value:
+        if int(val) == value:
             return key
 
 
 def GetCity(val):
     for key, value in CITY.items():
-        if val == value:
+        if int(val) == value:
             return key
 
 
 def GetProfession(val):
     for key, value in Profession.items():
-        if val == value:
+        if int(val) == value:
             return key
 
    # Marrital = Converter.GetMarried()
