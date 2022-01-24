@@ -191,13 +191,13 @@ def adminlogin():
                 return render_template('adminlogin.html', message=message)
 
 
-@app.route('/adminDashboard')
+@app.route('/adminDashboard', methods=['GET'])
 def adminDashboard():
-    if "email" in session:
-        email = session["email"]
-        admin_found = Adminrecord.find_one({"email": email})
-        email_val = admin_found['email']
-        return render_template('adminDashboard.html', email=email_val)
+    y = 1
+    if y == 1:
+        loanapps = list(LoanApplication.find({}))
+
+        return render_template('adminDashboard.html', loanapps=loanapps)
     else:
         return redirect(url_for("adminLogin"))
 
