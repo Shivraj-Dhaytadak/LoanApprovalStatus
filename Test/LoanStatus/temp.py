@@ -16,9 +16,6 @@ db = client.get_database('login')
 records = db.user
 Adminrecord = db.admin
 LoanApplication = db.LoanApplication
-loanapp = LoanApplication.find({}, {'_id': 0})
-loanapps = list(loanapp)
-print(loanapps)
 
 
 @app.route("/", methods=['post', 'get'])
@@ -75,15 +72,15 @@ def loanapply():
 def checkstatus():
     if "email" in session:
         email = session["email"]
-        email_found = LoanApplication.find_one({"Email": email})
-        Loandetails = {
-            "Fullname": email_found['Fullname'],
-            "Email": email_found['Email'],
-            "Income":  email_found['Income'],
-            "LoanAmount": email_found['LoanAmount'],
-            "Status": email_found['Status']
-        }
-        return render_template('checkstatus.html', Loan=Loandetails)
+        email_found = LoanApplication.find({"Email": email})
+        # Loandetails = {
+        #     "Fullname": email_found['Fullname'],
+        #     "Email": email_found['Email'],
+        #     "Income":  email_found['Income'],
+        #     "LoanAmount": email_found['LoanAmount'],
+        #     "Status": email_found['Status']
+        # }
+        return render_template('checkstatus.html', Loans=email_found)
 
 
 @app.route('/applyforloan', methods=['POST', 'GET'])
@@ -211,15 +208,15 @@ def applicationsearch():
     Loandetails1 = {}
     if request.method == "POST":
         email = request.form.get("email")
-        email_found = LoanApplication.find_one({"Email": email})
-        Loandetails = {
-            "Fullname": email_found['Fullname'],
-            "Email": email_found['Email'],
-            "Income":  email_found['Income'],
-            "LoanAmount": email_found['LoanAmount'],
-            "Status": email_found['Status']
-        }
-        return render_template('adminSearch.html', Loan=Loandetails)
+        email_found = list(LoanApplication.find({"Email": email}))
+        # Loandetails = {
+        #     "Fullname": email_found['Fullname'],
+        #     "Email": email_found['Email'],
+        #     "Income":  email_found['Income'],
+        #     "LoanAmount": email_found['LoanAmount'],
+        #     "Status": email_found['Status']
+        # }
+        return render_template('adminSearch.html', Loan=email_found)
     else:
         return render_template('adminSearch.html', Loan=Loandetails1)
 

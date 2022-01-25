@@ -31,7 +31,7 @@
                 <ul>
                     <li class="logo"> <i class="fa fa-university" aria-hidden="true"></i> Bank</li>
                     <!-- Nantar logo taku saddya rau de class logo-->
-                    <li class="items"><a href="#"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
+                    <li class="items"><a href="/userDashboard"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
                     <li class="items"><a href="/loanapply"><i class="fa fa-check-circle fa-xs" aria-hidden="true"></i> Apply</a></li>
                     <li class="items"> <a href="/logout"><i class="fa fa-power-off fa-xs"></i> Logout</a> </li>
                 </ul>
@@ -44,12 +44,12 @@
     </label>
         <div class="sidebar">
             <header>Welcome</header>
-            <a href="#" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
+            <a href="/userDashboard" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
             <!-- Nantar class inactive varun active krjo jeva sab hoin-->
             <a href="/checkstatus"><i class="fas fa-calendar"></i><span>Check status</span></a>
             <a href="#"><i class="far fa-envelope"></i><span>Contact Us</span></a>
             <a href="#"><i class="far fa-question-circle"></i><span>About</span></a>
-            <a href="#docs"><i class="fa fa-book" aria-hidden="true"></i><span>Required Docs</span></a>
+            <a href="/userDashboard#docs"><i class="fa fa-book" aria-hidden="true"></i><span>Required Docs</span></a>
             <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span></a>
 
             <div class="bottom">
@@ -73,13 +73,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for loanapp in Loans %}
                     <tr>
-                        <td>{{Loan['Fullname']}}</td>
-                        <td>{{Loan['Email']}}</td>
-                        <td>{{Loan['Income']}}</td>
-                        <td>{{Loan['LoanAmount']}}</td>
-                        <td>{{Loan['Status']}}</td>
+                        <td>{{ loanapp.Fullname }}</td>
+                        <td>{{ loanapp.Email }}</td>
+                        <td>{{ loanapp.Income }}</td>
+                        <td>{{ loanapp.LoanAmount }}</td>
+                        <td>{{ loanapp.Status }}</td>
+                        <td>
+                            <form action="POST">
+                                <button>Cancel & Delete</button>
+                            </form>
+                        </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
