@@ -11,11 +11,14 @@ model = pickle.load(open('model.pkl', 'rb'))
 app.secret_key = "6042d70a-20c4-4049-a6dc-e9a244903532"
 
 client = pymongo.MongoClient(
-    "mongodb+srv://flaskloan:flaskloan@cluster0.ogg9d.mongodb.net/login?ssl=true&ssl_cert_reqs=CERT_NONE")
+    "mongodb+srv://flaskloan:flaskloan@cluster0.ogg9d.mongodb.net/login?retryWrites=true&w=majority")
 db = client.get_database('login')
 records = db.user
 Adminrecord = db.admin
 LoanApplication = db.LoanApplication
+loanapp = LoanApplication.find({}, {'_id': 0})
+loanapps = list(loanapp)
+print(loanapps)
 
 
 @app.route("/", methods=['post', 'get'])
@@ -98,7 +101,6 @@ def predict():
     Profession = Converter.GetProfession(request.form.get("Profession"))
     City = Converter.GetCity(request.form.get("City"))
     State = Converter.GetState(request.form.get("STATE"))
-
 
     if(output == 0):
         result = "Approved"
@@ -191,15 +193,17 @@ def adminlogin():
                 return render_template('adminlogin.html', message=message)
 
 
-@app.route('/adminDashboard', methods=['GET'])
+@app.route('/adminDashboard', methods=['GET', 'POST'])
 def adminDashboard():
-    y = 1
-    if y == 1:
-        loanapps = list(LoanApplication.find({}))
+    if "email" in session:
+        if request.method == "POST":
+            loanapp = LoanApplication.find()
+            loanapps = list(loanapp)
 
-        return render_template('adminDashboard.html', loanapps=loanapps)
-    else:
-        return redirect(url_for("adminLogin"))
+            return render_template('adminDashboard.html', loanapps=loanapps)
+        else:
+            return redirect(url_for("adminLogin"))
+    return render_template('adminDashboard.html')
 
 
 @app.route('/applicationsearch', methods=['POST', 'GET'])
@@ -218,5 +222,7 @@ def applicationsearch():
         return render_template('adminSearch.html', Loan=Loandetails)
     else:
         return render_template('adminSearch.html', Loan=Loandetails1)
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
