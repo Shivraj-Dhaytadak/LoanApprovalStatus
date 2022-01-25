@@ -29,10 +29,9 @@
         <div class="navbar">
             <nav>
                 <ul>
-                    <li class="logo"> <i class="fa fa-university" aria-hidden="true"></i> Bank</li>
+                    <li class="logo"> <i class="fa fa-university" aria-hidden="true"></i> Bank Admin </li>
                     <!-- Nantar logo taku saddya rau de class logo-->
                     <li class="items"><a href="#"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
-                    <li class="items"><a href="/loanapply"><i class="fa fa-check-circle fa-xs" aria-hidden="true"></i> Apply</a></li>
                     <li class="items"> <a href="/logout"><i class="fa fa-power-off fa-xs"></i> Logout</a> </li>
                 </ul>
             </nav>
@@ -43,13 +42,9 @@
       <i class="fas fa-times" id="cancel"></i>
     </label>
         <div class="sidebar">
-            <header>Welcome</header>
-            <a href="#" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
-            <!-- Nantar class inactive varun active krjo jeva sab hoin-->
-            <a href="/checkstatus"><i class="fas fa-calendar"></i><span>Check status</span></a>
-            <a href="#"><i class="far fa-envelope"></i><span>Contact Us</span></a>
-            <a href="#"><i class="far fa-question-circle"></i><span>About</span></a>
-            <a href="#docs"><i class="fa fa-book" aria-hidden="true"></i><span>Required Docs</span></a>
+            <header>Welcome Admin</header>
+            <a href="#" class="active"><i class="fas fa-credit-card"></i><span>Admin Dashboard</span></a>
+            <a href="/applicationsearch"><i class="far fa-envelope"></i><span>Search</span></a>
             <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span></a>
 
             <div class="bottom">
@@ -60,30 +55,38 @@
             </div>
         </div>
         <div class="container main">
-
-            <table class="dataTable">
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Income</th>
-                        <th>Loan Amount</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{Loan['Fullname']}}</td>
-                        <td>{{Loan['Email']}}</td>
-                        <td>{{Loan['Income']}}</td>
-                        <td>{{Loan['LoanAmount']}}</td>
-                        <td>{{Loan['Status']}}</td>
-                    </tr>
-                </tbody>
-            </table>
-
+            <form action="/applicationsearch" method="POST">
+                <h3>Search for Application by Email</h3>
+                <input type="text" placeholder="Email" name="email">
+                <button type="submit">Search</button>
+            </form>
         </div>
+        <table class="dataTable">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Income</th>
+                    <th>Loan Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{Loan['Fullname']}}</td>
+                    <td>{{Loan['Email']}}</td>
+                    <td>{{Loan['Income']}}</td>
+                    <td>{{Loan['LoanAmount']}}</td>
+                    <td>{{Loan['Status']}}</td>
+                    <td>
+                        <form action="POST"><button>Confirm
+                            
+                        </button></form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 
     </html>

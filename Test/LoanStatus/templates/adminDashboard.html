@@ -6,12 +6,139 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .button {
+            background-color: white;
+            margin: 5px;
+            text-decoration-color: black;
+        }
+        
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            font-size: large;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        
+        .search-container button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: darkcyan;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .search-container {
+            float: right;
+        }
+        
+        .search-container button:hover {
+            background: darkcyan;
+        }
+        
+        .search-container button {
+            float: right;
+            display: block;
+            text-align: center;
+            margin: 0;
+            padding: 14px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="sub">
-        <a href="/logout"><input type="submit" value="log out"></a>
-    </div>
-</body>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
 
-</html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="static/userDashboard.css">
+        <link rel="stylesheet" href="static/bodypart.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    </head>
+
+    <body>
+        <!-- this is navbar -->
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li class="logo"> <i class="fa fa-university" aria-hidden="true"></i> Bank Admin </li>
+                    <!-- Nantar logo taku saddya rau de class logo-->
+                    <li class="items"><a href="#"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
+                    <li class="items"> <a href="/logout"><i class="fa fa-power-off fa-xs"></i> Logout</a> </li>
+                </ul>
+            </nav>
+        </div>
+        <input type="checkbox" id="check">
+        <label for="check">
+      <i class="fas fa-bars " id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+        <div class="sidebar">
+            <header>Welcome Admin</header>
+            <a href="/adminDashboard" class="active"><i class="fas fa-credit-card"></i><span>Admin Dashboard</span></a>
+            <a href="/applicationsearch"><i class="far fa-envelope"></i><span>Search</span></a>
+            <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span></a>
+
+            <div class="bottom">
+                <ul class="fa-ul">
+                    <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li>
+                    <!--spinning object-->
+                </ul>
+            </div>
+        </div>
+
+        <div class="container align-content-center">
+            <form action="/adminDashboard" method="POST">
+                <button type="submit">Refresh For Updating Table</button>
+            </form>
+            <table class="dataTable" id="datalist">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Income</th>
+                        <th>Loan Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for loanapp in loanapps %}
+                    <tr>
+                        <td>{{ loanapp.Fullname }}</td>
+                        <td>{{ loanapp.Email }}</td>
+                        <td>{{ loanapp.Income }}</td>
+                        <td>{{ loanapp.LoanAmount }}</td>
+                        <td>{{ loanapp.Status }}</td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </body>
+
+    </html>

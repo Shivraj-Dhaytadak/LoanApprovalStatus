@@ -7,13 +7,18 @@ import Converter
 import numpy as np
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
+
 app.secret_key = "6042d70a-20c4-4049-a6dc-e9a244903532"
+
 client = pymongo.MongoClient(
-    "mongodb+srv://flaskloan:flaskloan@cluster0.ogg9d.mongodb.net/login?ssl=true&ssl_cert_reqs=CERT_NONE")
+    "mongodb+srv://flaskloan:flaskloan@cluster0.ogg9d.mongodb.net/login?retryWrites=true&w=majority")
 db = client.get_database('login')
 records = db.user
 Adminrecord = db.admin
 LoanApplication = db.LoanApplication
+loanapp = LoanApplication.find({}, {'_id': 0})
+loanapps = list(loanapp)
+print(loanapps)
 
 
 @app.route("/", methods=['post', 'get'])
@@ -72,12 +77,12 @@ def checkstatus():
         email = session["email"]
         email_found = LoanApplication.find_one({"Email": email})
         Loandetails = {
-                "Fullname": email_found['Fullname'],
-                "Email": email_found['Email'],
-                "Income":  email_found['Income'],
-                "LoanAmount": email_found['LoanAmount'],
-                "Status": email_found['Status']
-            }
+            "Fullname": email_found['Fullname'],
+            "Email": email_found['Email'],
+            "Income":  email_found['Income'],
+            "LoanAmount": email_found['LoanAmount'],
+            "Status": email_found['Status']
+        }
         return render_template('checkstatus.html', Loan=Loandetails)
 
 
@@ -88,8 +93,15 @@ def predict():
         "Car_Ownership"), request.form.get("Profession"), request.form.get("City"), request.form.get("STATE"), request.form.get("Current_Job_yrs"), request.form.get("Current_House_yrs")]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
-
     output = round(prediction[0], 2)
+
+    Marrital = Converter.GetMarried(request.form.get("Married/Single"))
+    House = Converter.GetHouse(request.form.get("House_Ownership"))
+    Car = Converter.GetCar(request.form.get("Car_Ownership"))
+    Profession = Converter.GetProfession(request.form.get("Profession"))
+    City = Converter.GetCity(request.form.get("City"))
+    State = Converter.GetState(request.form.get("STATE"))
+
     if(output == 0):
         result = "Approved"
     else:
@@ -101,12 +113,12 @@ def predict():
         "Income": request.form.get("Income"),
         "Age": request.form.get("age"),
         "Experience": request.form.get("Experience"),
-        "Married/Single": request.form.get("Married/Single"),
-        "House_Ownership": request.form.get("House_Ownership"),
-        "Car_Ownership": request.form.get("Car_Ownership"),
-        "Profession": request.form.get("Profession"),
-        "City": request.form.get("City"),
-        "STATE": request.form.get("STATE"),
+        "Married/Single": Marrital,
+        "House_Ownership": House,
+        "Car_Ownership": Car,
+        "Profession": Profession,
+        "City": City,
+        "STATE": State,
         "Current_Job_yrs": request.form.get("Current_Job_yrs"),
         "Current_House_yrs": request.form.get("Current_House_yrs"),
         "Status": result
@@ -181,14 +193,36 @@ def adminlogin():
                 return render_template('adminlogin.html', message=message)
 
 
-@app.route('/adminDashboard')
+@app.route('/adminDashboard', methods=['GET', 'POST'])
 def adminDashboard():
     if "email" in session:
-        email = session["email"]
-        return render_template('adminDashboard.html', email=email)
+        if request.method == "POST":
+            loanapp = LoanApplication.find()
+            loanapps = list(loanapp)
+
+            return render_template('adminDashboard.html', loanapps=loanapps)
+        else:
+            return redirect(url_for("adminLogin"))
+    return render_template('adminDashboard.html')
+
+
+@app.route('/applicationsearch', methods=['POST', 'GET'])
+def applicationsearch():
+    Loandetails1 = {}
+    if request.method == "POST":
+        email = request.form.get("email")
+        email_found = LoanApplication.find_one({"Email": email})
+        Loandetails = {
+            "Fullname": email_found['Fullname'],
+            "Email": email_found['Email'],
+            "Income":  email_found['Income'],
+            "LoanAmount": email_found['LoanAmount'],
+            "Status": email_found['Status']
+        }
+        return render_template('adminSearch.html', Loan=Loandetails)
     else:
-        return redirect(url_for("adminLogin"))
+        return render_template('adminSearch.html', Loan=Loandetails1)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)

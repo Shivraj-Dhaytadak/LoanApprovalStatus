@@ -38,6 +38,9 @@
         </div>
         <div class="formBx">
             <div class="form signinform">
+                <br>
+                <center><b><h2 style="color:#FF0000";>{{ message }}</h2></b></center>
+                <br>
                 <form action="/userlogin" method="POST">
                     <h3>Log In</h3>
                     <input type="email" placeholder="Email" name="user[email]" required>
@@ -46,6 +49,9 @@
                 </form>
             </div>
             <div class="form signupform">
+                <br>
+                <center><b><h2 style="color:#FF0000";>{{ message }}</h2></b></center>
+                <br>
                 <form action="/" method="POST">
                     <h3>Sign up</h3>
                     <input type="text" placeholder="username" name="user[username]" required>
