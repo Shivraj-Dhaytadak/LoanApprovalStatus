@@ -86,8 +86,8 @@ def checkstatus():
 @app.route('/applyforloan', methods=['POST', 'GET'])
 def predict():
 
-    int_features = [request.form.get("Income"), request.form.get("age"), request.form.get("Experience"), request.form.get("Married/Single"), request.form.get("House_Ownership"), request.form.get(
-        "Car_Ownership"), request.form.get("Profession"), request.form.get("City"), request.form.get("STATE"), request.form.get("Current_Job_yrs"), request.form.get("Current_House_yrs")]
+    int_features = int([request.form.get("Income"), request.form.get("age"), request.form.get("Experience"), request.form.get("Married/Single"), request.form.get("House_Ownership"), request.form.get(
+        "Car_Ownership"), request.form.get("Profession"), request.form.get("City"), request.form.get("STATE"), request.form.get("Current_Job_yrs"), request.form.get("Current_House_yrs")])
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
     output = round(prediction[0], 2)

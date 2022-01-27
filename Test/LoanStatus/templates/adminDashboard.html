@@ -111,9 +111,7 @@
         </div>
 
         <div class="container align-content-center">
-            <form action="/adminDashboard" method="POST">
-                <button type="submit">Refresh For Updating Table</button>
-            </form>
+
             <table class="dataTable" id="datalist">
                 <thead>
                     <tr>
@@ -137,7 +135,9 @@
                     {% endfor %}
                 </tbody>
             </table>
-
+            <form action="/adminDashboard" method="POST">
+                <button type="submit">Refresh For Updating Table</button>
+            </form>
         </div>
     </body>
 
