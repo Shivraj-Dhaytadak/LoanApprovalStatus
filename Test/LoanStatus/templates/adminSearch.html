@@ -74,16 +74,21 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{Loan['Fullname']}}</td>
-                    <td>{{Loan['Email']}}</td>
-                    <td>{{Loan['Income']}}</td>
-                    <td>{{Loan['LoanAmount']}}</td>
-                    <td>{{Loan['Status']}}</td>
-                    <td>
-                        <form action="POST"><button>Confirm
-                            
-                        </button></form>
-                    </td>
+                    {% for loanapp in Loan %}
+                    <tr>
+                        <td>{{ loanapp.Fullname }}</td>
+                        <td>{{ loanapp.Email }}</td>
+                        <td>{{ loanapp.Income }}</td>
+                        <td>{{ loanapp.LoanAmount }}</td>
+                        <td>{{ loanapp.Status }}</td>
+
+                        <td>
+                            <form action="POST"><button>Confirm
+                                
+                            </button></form>
+                        </td>
+                    </tr>
+                    {% endfor %}
                 </tr>
             </tbody>
         </table>
