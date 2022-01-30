@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import bcrypt
 import pickle
+
+from telegram import message
 import Converter
 import numpy as np
 app = Flask(__name__)
@@ -21,8 +23,6 @@ LoanApplication = db.LoanApplication
 @app.route("/", methods=['post', 'get'])
 def userLog():
     message = ''
-    if "email" in session:
-        return redirect(url_for("userDashboard"))
     if request.method == "POST":
         user = request.form.get("user[username]")
         email = request.form.get("user[email]")
@@ -56,7 +56,11 @@ def userLog():
 def userDashboard():
     if "email" in session:
         email = session["email"]
-        return render_template('userDashboard.html', email=email)
+        user_data = records.find_one({"email": email})
+        if user_data['email'] == session["email"]:
+            return render_template('userDashboard.html', email=email)
+        else:
+            return redirect(url_for("userLogin"))
     else:
         return redirect(url_for("userLogin"))
 
@@ -65,7 +69,12 @@ def userDashboard():
 def loanapply():
     if "email" in session:
         email = session["email"]
-        return render_template('LoanApply.html')
+        email_found = LoanApplication.find({"Email": email})
+        if email_found:
+            message = " Already Have a Application"
+            return render_template('LoanApply.html', message=message)
+        else:
+            return render_template('LoanApply.html')
 
 
 @app.route('/checkstatus', methods=['POST', 'GET'])
@@ -73,6 +82,9 @@ def checkstatus():
     if "email" in session:
         email = session["email"]
         email_found = LoanApplication.find({"Email": email})
+        if request.method == "POST":
+            Delete_Application = LoanApplication.delete_one({"Email": email})
+            return render_template('checkstatus.html', Loans=email_found)
         # Loandetails = {
         #     "Fullname": email_found['Fullname'],
         #     "Email": email_found['Email'],
@@ -80,14 +92,14 @@ def checkstatus():
         #     "LoanAmount": email_found['LoanAmount'],
         #     "Status": email_found['Status']
         # }
-        return render_template('checkstatus.html', Loans=email_found)
+    return render_template('checkstatus.html', Loans=email_found)
 
 
 @app.route('/applyforloan', methods=['POST', 'GET'])
 def predict():
 
-    int_features = int([request.form.get("Income"), request.form.get("age"), request.form.get("Experience"), request.form.get("Married/Single"), request.form.get("House_Ownership"), request.form.get(
-        "Car_Ownership"), request.form.get("Profession"), request.form.get("City"), request.form.get("STATE"), request.form.get("Current_Job_yrs"), request.form.get("Current_House_yrs")])
+    int_features = [request.form.get("Income"), request.form.get("age"), request.form.get("Experience"), request.form.get("Married/Single"), request.form.get("House_Ownership"), request.form.get(
+        "Car_Ownership"), request.form.get("Profession"), request.form.get("City"), request.form.get("STATE"), request.form.get("Current_Job_yrs"), request.form.get("Current_House_yrs")]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
     output = round(prediction[0], 2)
@@ -127,9 +139,6 @@ def predict():
 @app.route("/userlogin", methods=["POST", "GET"])
 def userlogin():
     message = 'Please login to your account'
-    if "email" in session:
-        return redirect(url_for("userDashboard"))
-
     if request.method == "POST":
         email = request.form.get("user[email]")
         password = request.form.get("user[password]")
@@ -173,6 +182,8 @@ def loadAdmin():
 @app.route('/adminlogin', methods=['POST', 'GET'])
 def adminlogin():
     if request.method == "POST":
+        loanapp = LoanApplication.find()
+        loanapps = list(loanapp)
         email = request.form.get("admin[username]")
         password = request.form.get("admin[password]")
         admin_found = Adminrecord.find_one({"email": email})
@@ -182,7 +193,7 @@ def adminlogin():
 
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
-                return render_template('adminDashboard.html')
+                return render_template('adminDashboard.html', loanapps=loanapps)
             else:
                 if "email" in session:
                     return render_template('adminDashboard.html')
@@ -192,15 +203,13 @@ def adminlogin():
 
 @app.route('/adminDashboard', methods=['GET', 'POST'])
 def adminDashboard():
-    if "email" in session:
-        if request.method == "POST":
-            loanapp = LoanApplication.find()
-            loanapps = list(loanapp)
+    if request.method == "POST":
+        loanapp = LoanApplication.find()
+        loanapps = list(loanapp)
 
-            return render_template('adminDashboard.html', loanapps=loanapps)
-        else:
-            return redirect(url_for("adminLogin"))
-    return render_template('adminDashboard.html')
+        return render_template('adminDashboard.html', loanapps=loanapps)
+    else:
+        return redirect(url_for("adminLogin"))
 
 
 @app.route('/applicationsearch', methods=['POST', 'GET'])
@@ -222,4 +231,4 @@ def applicationsearch():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
