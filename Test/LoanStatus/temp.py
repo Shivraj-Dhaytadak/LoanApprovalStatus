@@ -1,4 +1,5 @@
 
+from locale import currency
 from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import bcrypt
@@ -98,8 +99,9 @@ def checkstatus():
 @app.route('/applyforloan', methods=['POST', 'GET'])
 def predict():
 
-    int_features = [request.form.get("Income"), request.form.get("age"), request.form.get("Experience"), request.form.get("Married/Single"), request.form.get("House_Ownership"), request.form.get(
-        "Car_Ownership"), request.form.get("Profession"), request.form.get("City"), request.form.get("STATE"), request.form.get("Current_Job_yrs"), request.form.get("Current_House_yrs")]
+    int_features = [request.form.get("Income", type=int), request.form.get("age", type=int), request.form.get("Experience", type=int), request.form.get("Married/Single", type=int), request.form.get("House_Ownership", type=int), request.form.get(
+        "Car_Ownership", type=int), request.form.get("Profession", type=int), request.form.get("City", type=int), request.form.get("STATE", type=int), request.form.get("Current_Job_yrs", type=int), request.form.get("Current_House_yrs", type=int)]
+
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
     output = round(prediction[0], 2)
@@ -119,17 +121,17 @@ def predict():
         "Fullname": request.form.get("fullname"),
         "Email": request.form.get("email"),
         "LoanAmount": request.form.get("LoanAmount"),
-        "Income": request.form.get("Income"),
-        "Age": request.form.get("age"),
-        "Experience": request.form.get("Experience"),
+        "Income": request.form.get("Income", type=int),
+        "Age": request.form.get("age", type=int),
+        "Experience": request.form.get("Experience", type=int),
         "Married/Single": Marrital,
         "House_Ownership": House,
         "Car_Ownership": Car,
         "Profession": Profession,
         "City": City,
         "STATE": State,
-        "Current_Job_yrs": request.form.get("Current_Job_yrs"),
-        "Current_House_yrs": request.form.get("Current_House_yrs"),
+        "Current_Job_yrs": request.form.get("Current_Job_yrs", type=int),
+        "Current_House_yrs": request.form.get("Current_House_yrs", type=int),
         "Status": result
     }
     LoanApplication.insert_one(ApplicationForCloud)
@@ -203,13 +205,9 @@ def adminlogin():
 
 @app.route('/adminDashboard', methods=['GET', 'POST'])
 def adminDashboard():
-    if request.method == "POST":
-        loanapp = LoanApplication.find()
-        loanapps = list(loanapp)
-
-        return render_template('adminDashboard.html', loanapps=loanapps)
-    else:
-        return redirect(url_for("adminLogin"))
+    loanapp = LoanApplication.find()
+    loanapps = list(loanapp)
+    return render_template('adminDashboard.html', loanapps=loanapps)
 
 
 @app.route('/applicationsearch', methods=['POST', 'GET'])
@@ -218,13 +216,9 @@ def applicationsearch():
     if request.method == "POST":
         email = request.form.get("email")
         email_found = list(LoanApplication.find({"Email": email}))
-        # Loandetails = {
-        #     "Fullname": email_found['Fullname'],
-        #     "Email": email_found['Email'],
-        #     "Income":  email_found['Income'],
-        #     "LoanAmount": email_found['LoanAmount'],
-        #     "Status": email_found['Status']
-        # }
+        if request.method == "POST":
+
+            return render_template('adminSearch.html', Loan=email_found)
         return render_template('adminSearch.html', Loan=email_found)
     else:
         return render_template('adminSearch.html', Loan=Loandetails1)
