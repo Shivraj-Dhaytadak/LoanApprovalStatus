@@ -75,19 +75,19 @@
             <tbody>
                 <tr>
                     {% for loanapp in Loan %}
-                    <tr>
-                        <td>{{ loanapp.Fullname }}</td>
-                        <td>{{ loanapp.Email }}</td>
-                        <td>{{ loanapp.Income }}</td>
-                        <td>{{ loanapp.LoanAmount }}</td>
-                        <td>{{ loanapp.Status }}</td>
+                    <form action="/applicationconfirm" method="POST">
+                        <tr>
+                            <td name="FullName">{{ loanapp.Fullname }}</td>
+                            <td name="email">{{ loanapp.Email }}</td>
+                            <td>{{ loanapp.Income }}</td>
+                            <td>{{ loanapp.LoanAmount }}</td>
+                            <td>{{ loanapp.Status }}</td>
 
-                        <td>
-                            <form action="/applicationsearch" method="POST"><button>Confirm
-                                
-                            </button></form>
-                        </td>
-                    </tr>
+                            <td>
+                                <button>Confirm</button>
+                            </td>
+                        </tr>
+                    </form>
                     {% endfor %}
                 </tr>
             </tbody>

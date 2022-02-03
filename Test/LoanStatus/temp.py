@@ -1,11 +1,8 @@
-
-from locale import currency
+import email
 from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import bcrypt
 import pickle
-
-from telegram import message
 import Converter
 import numpy as np
 app = Flask(__name__)
@@ -215,10 +212,22 @@ def applicationsearch():
     Loandetails1 = {}
     if request.method == "POST":
         email = request.form.get("email")
+        session['searched'] = email
         email_found = list(LoanApplication.find({"Email": email}))
-        if request.method == "POST":
+        return render_template('adminSearch.html', Loan=email_found)
+    else:
+        return render_template('adminSearch.html', Loan=Loandetails1)
 
-            return render_template('adminSearch.html', Loan=email_found)
+
+@app.route('/applicationconfirm', methods=['POST', 'GET'])
+def applicationconfirm():
+    Loandetails1 = {}
+    if request.method == 'POST':
+        email = session['searched']
+        LoanApplication.update_one(
+            {"Email": email}, {"$set": {"Status": "Confirm"}}, upsert=False)
+        email_found = list(LoanApplication.find({"Email": email}))
+        print(email_found)
         return render_template('adminSearch.html', Loan=email_found)
     else:
         return render_template('adminSearch.html', Loan=Loandetails1)
