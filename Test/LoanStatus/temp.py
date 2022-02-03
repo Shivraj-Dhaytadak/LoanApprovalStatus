@@ -95,12 +95,25 @@ def checkstatus():
 
 @app.route('/applyforloan', methods=['POST', 'GET'])
 def predict():
+    IncomeEntered = request.form.get("Income", type=int)
+    AgeEntered = request.form.get("age", type=int)
+    ExperinceEntered = request.form.get("Experience", type=int)
+    MarritalEntered = request.form.get("Married/Single", type=int)
+    HouseEntered = request.form.get("House_Ownership", type=int)
+    CarEntered = request.form.get("Car_Ownership", type=int)
+    ProEntered = request.form.get("Profession", type=int)
+    CityEntered = request.form.get("City", type=int)
+    StateEntered = request.form.get("STATE", type=int)
+    CJYEntered = request.form.get("Current_Job_yrs", type=int)
+    CHYEntered = request.form.get("Current_House_yrs", type=int)
+    # int_features = [request.form.get("Income", type=int), request.form.get("age", type=int), request.form.get("Experience", type=int), request.form.get("Married/Single", type=int), request.form.get("House_Ownership", type=int), request.form.get(
+    #     "Car_Ownership", type=int), request.form.get("Profession", type=int), request.form.get("City", type=int), request.form.get("STATE", type=int), request.form.get("Current_Job_yrs", type=int), request.form.get("Current_House_yrs", type=int)]
 
-    int_features = [request.form.get("Income", type=int), request.form.get("age", type=int), request.form.get("Experience", type=int), request.form.get("Married/Single", type=int), request.form.get("House_Ownership", type=int), request.form.get(
-        "Car_Ownership", type=int), request.form.get("Profession", type=int), request.form.get("City", type=int), request.form.get("STATE", type=int), request.form.get("Current_Job_yrs", type=int), request.form.get("Current_House_yrs", type=int)]
-
-    final_features = [np.array(int_features)]
-    prediction = model.predict(final_features)
+    # final_features = [np.array(int_features)]
+    # print(final_features)
+    prediction = model.predict([[IncomeEntered, AgeEntered, ExperinceEntered, MarritalEntered,
+                               HouseEntered, CarEntered, ProEntered, CityEntered, StateEntered, CJYEntered, CHYEntered]])
+    print(prediction)
     output = round(prediction[0], 2)
 
     Marrital = Converter.GetMarried(request.form.get("Married/Single"))
