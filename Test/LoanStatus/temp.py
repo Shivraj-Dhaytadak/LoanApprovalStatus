@@ -1,4 +1,3 @@
-import email
 from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import bcrypt
@@ -67,10 +66,10 @@ def userDashboard():
 def loanapply():
     if "email" in session:
         email = session["email"]
-        email_found = LoanApplication.find({"Email": email})
+        email_found = list(LoanApplication.find({"Email": email}))
         if email_found:
-            message = " Already Have a Application"
-            return render_template('LoanApply.html', message=message)
+            message = "Alert: Already Application exist Please Delete before Applying For New Application"
+            return render_template('checkstatus.html', Loans=email_found, message=message)
         else:
             return render_template('LoanApply.html')
 
