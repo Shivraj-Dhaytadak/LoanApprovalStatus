@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <!-- Favicon and title -->
     <link rel="icon" href="path/to/fav.png">
-    <title>Starter template - Halfmoon</title>
+    <title>apply for loan</title>
   
     <!-- Halfmoon CSS -->
     <link href="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.4/css/halfmoon.min.css" rel="stylesheet" />
@@ -21,8 +21,7 @@
 <body>
     <!-- Page wrapper start -->
     <div id="page-wrapper" class="page-wrapper with-navbar with-sidebar with-navbar-fixed-bottom with-transitions" data-sidebar-type="default" data-sidebar-hidden="hidden">
-        <!-- Sticky alerts -->
-        <div class="sticky-alerts"> </div>
+        
     
         <!-- Navbar start -->
         <nav class="navbar">
@@ -114,7 +113,8 @@
         </div>
         <!-- Sidebar end -->
 
-
+<div class="content-wrapper">
+    
     <!-- bootstrap -->
     <div class="container main">
         <div class="jumbotron" id="holder">
@@ -130,25 +130,25 @@
 
             <form class="form-horizontal" action="/applyforloan" method="post">
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <h4> Applicant's Full Name </h4>
                         <input class="form-control" type="text" name="fullname" placeholder="Your Full Name" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <h4>Applicant's Email</h4>
                         <input class="form-control" type="email" name="email" placeholder="Your email" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div class="col-sm-5">
                         <h4>Loan Amount in Rupees </h4>
                         <input class="form-control" type="text" name="LoanAmount" placeholder="Loan Amount" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div class="col-sm-5">
                         <h4>Applicant's Current Income in Rupees </h4>
                         <input class="form-control" type="text" name="Income" placeholder="Your Income" required="required" />
                     </div>
@@ -162,7 +162,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div class="col-sm-5">
                         <h4>Applicant's experience</h4>
                         <input class="form-control" type="number" name="Experience" placeholder="Your Field Experience" required="required" />
                     </div>
@@ -637,8 +637,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="button btn btn-default">Apply for Loan</button>
+                    <div class="col-sm-offset-1 col-sm-100">
+                        <button type="submit" class="button btn btn-submit">Apply for Loan</button>
 
                     </div>
                 </div>
@@ -648,7 +648,26 @@
 
         </div>
     </div>
-
+</div>
+     <!-- Navbar fixed bottom start -->
+     <nav class="navbar navbar-fixed-bottom">
+        
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-question-circle-o mr-5" aria-hidden="true"></i>
+              Help
+            </a>
+          </li>
+          <span class="navbar-text">
+            <ul class="fa-ul">
+                <li> <i class="fa-li fa fa-spinner fa-spin"></i>Designed & Developed by G-10</li>
+             <!--spinning object-->
+        </span>
+        </ul>
+        
+      </nav>
+      <!-- Navbar fixed bottom end -->
 
     <!-- <footer class="tag">
     <ul class="fa-ul">
