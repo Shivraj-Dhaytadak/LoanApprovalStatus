@@ -14,6 +14,7 @@
 
     <head>
         <meta charset="utf-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="static/userDashboard.css">
         <link rel="stylesheet" href="static/bodypart.css">
 
@@ -61,28 +62,28 @@
         </div>
         <div class="container main">
             <center><b><h2 style="color:#FF0000";>{{ message }}</h2></b></center>
-            <table class="dataTable">
+            <table class="table table-bordered ">
                 <thead>
                     <tr>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Income</th>
-                        <th>Loan Amount</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th class="text-center">Full Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Income</th>
+                        <th class="text-center">Loan Amount</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="">
                     {% for loanapp in Loans %}
                     <tr>
-                        <td>{{ loanapp.Fullname }}</td>
-                        <td>{{ loanapp.Email }}</td>
-                        <td>{{ loanapp.Income }}</td>
-                        <td>{{ loanapp.LoanAmount }}</td>
-                        <td>{{ loanapp.Status }}</td>
+                        <td class="text-center">{{ loanapp.Fullname }}</td>
+                        <td class="text-center">{{ loanapp.Email }}</td>
+                        <td class="text-center">{{ loanapp.Income }}</td>
+                        <td class="text-center">{{ loanapp.LoanAmount }}</td>
+                        <td class="text-center btn-outline-success ">{{ loanapp.Status }}</td>
                         <td>
                             <form action="/checkstatus" method="POST">
-                                <button>Cancel & Delete</button>
+                                <button class="btn-block btn-danger ">Cancel & Delete</button>
                             </form>
                         </td>
                     </tr>

@@ -245,5 +245,17 @@ def applicationconfirm():
         return render_template('adminSearch.html', Loan=Loandetails1)
 
 
+@app.route('/applicationreject', methods=['POST', 'GET'])
+def applicationreject():
+    Loandetails1 = {}
+    if request.method == 'POST':
+        email = session['searched']
+        LoanApplication.update_one(
+            {"Email": email}, {"$set": {"Status": "Rejected By Bank Admin"}}, upsert=False)
+        email_found = list(LoanApplication.find({"Email": email}))
+        print(email_found)
+        return render_template('adminSearch.html', Loan=email_found)
+    else:
+        return render_template('adminSearch.html', Loan=Loandetails1)
 if __name__ == "__main__":
     app.run(debug=True)
