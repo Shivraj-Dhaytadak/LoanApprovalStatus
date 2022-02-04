@@ -211,6 +211,9 @@ def adminDashboard():
     else:
         return redirect(url_for("adminLogin"))
 
+@app.route('/chart', methods=['POST', 'GET'])
+def chart():
+    return render_template('chart.html')
 
 @app.route('/applicationsearch', methods=['POST', 'GET'])
 def applicationsearch():
@@ -232,3 +235,4 @@ def applicationsearch():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
