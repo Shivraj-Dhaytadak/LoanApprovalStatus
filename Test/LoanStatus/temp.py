@@ -72,6 +72,7 @@ def loanapply():
             return render_template('checkstatus.html', Loans=email_found, message=message)
         else:
             return render_template('LoanApply.html')
+    return render_template('LoanApply.html')
 
 
 @app.route('/checkstatus', methods=['POST', 'GET'])
@@ -114,7 +115,7 @@ def predict():
                                HouseEntered, CarEntered, ProEntered, CityEntered, StateEntered, CJYEntered, CHYEntered]])
     print(prediction)
     output = round(prediction[0], 2)
-
+    print(output)
     Marrital = Converter.GetMarried(request.form.get("Married/Single"))
     House = Converter.GetHouse(request.form.get("House_Ownership"))
     Car = Converter.GetCar(request.form.get("Car_Ownership"))
@@ -239,7 +240,6 @@ def applicationconfirm():
         LoanApplication.update_one(
             {"Email": email}, {"$set": {"Status": "Confirm"}}, upsert=False)
         email_found = list(LoanApplication.find({"Email": email}))
-        print(email_found)
         return render_template('adminSearch.html', Loan=email_found)
     else:
         return render_template('adminSearch.html', Loan=Loandetails1)
@@ -257,5 +257,7 @@ def applicationreject():
         return render_template('adminSearch.html', Loan=email_found)
     else:
         return render_template('adminSearch.html', Loan=Loandetails1)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
