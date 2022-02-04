@@ -1,10 +1,7 @@
-
 from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import bcrypt
 import pickle
-
-# from telegram import message
 import Converter
 import numpy as np
 app = Flask(__name__)
@@ -69,12 +66,13 @@ def userDashboard():
 def loanapply():
     if "email" in session:
         email = session["email"]
-        email_found = LoanApplication.find({"Email": email})
+        email_found = list(LoanApplication.find({"Email": email}))
         if email_found:
-            message = " Already Have a Application"
-            return render_template('LoanApply.html', message=message)
+            message = "Alert: Already Application exist Please Delete before Applying For New Application"
+            return render_template('checkstatus.html', Loans=email_found, message=message)
         else:
             return render_template('LoanApply.html')
+    return render_template('LoanApply.html')
 
 
 @app.route('/checkstatus', methods=['POST', 'GET'])
@@ -97,13 +95,27 @@ def checkstatus():
 
 @app.route('/applyforloan', methods=['POST', 'GET'])
 def predict():
+    IncomeEntered = request.form.get("Income", type=int)
+    AgeEntered = request.form.get("age", type=int)
+    ExperinceEntered = request.form.get("Experience", type=int)
+    MarritalEntered = request.form.get("Married/Single", type=int)
+    HouseEntered = request.form.get("House_Ownership", type=int)
+    CarEntered = request.form.get("Car_Ownership", type=int)
+    ProEntered = request.form.get("Profession", type=int)
+    CityEntered = request.form.get("City", type=int)
+    StateEntered = request.form.get("STATE", type=int)
+    CJYEntered = request.form.get("Current_Job_yrs", type=int)
+    CHYEntered = request.form.get("Current_House_yrs", type=int)
+    # int_features = [request.form.get("Income", type=int), request.form.get("age", type=int), request.form.get("Experience", type=int), request.form.get("Married/Single", type=int), request.form.get("House_Ownership", type=int), request.form.get(
+    #     "Car_Ownership", type=int), request.form.get("Profession", type=int), request.form.get("City", type=int), request.form.get("STATE", type=int), request.form.get("Current_Job_yrs", type=int), request.form.get("Current_House_yrs", type=int)]
 
-    int_features = [request.form.get("Income"), request.form.get("age"), request.form.get("Experience"), request.form.get("Married/Single"), request.form.get("House_Ownership"), request.form.get(
-        "Car_Ownership"), request.form.get("Profession"), request.form.get("City"), request.form.get("STATE"), request.form.get("Current_Job_yrs"), request.form.get("Current_House_yrs")]
-    final_features = [np.array(int_features)]
-    prediction = model.predict(final_features)
+    # final_features = [np.array(int_features)]
+    # print(final_features)
+    prediction = model.predict([[IncomeEntered, AgeEntered, ExperinceEntered, MarritalEntered,
+                               HouseEntered, CarEntered, ProEntered, CityEntered, StateEntered, CJYEntered, CHYEntered]])
+    print(prediction)
     output = round(prediction[0], 2)
-
+    print(output)
     Marrital = Converter.GetMarried(request.form.get("Married/Single"))
     House = Converter.GetHouse(request.form.get("House_Ownership"))
     Car = Converter.GetCar(request.form.get("Car_Ownership"))
@@ -119,17 +131,17 @@ def predict():
         "Fullname": request.form.get("fullname"),
         "Email": request.form.get("email"),
         "LoanAmount": request.form.get("LoanAmount"),
-        "Income": request.form.get("Income"),
-        "Age": request.form.get("age"),
-        "Experience": request.form.get("Experience"),
+        "Income": request.form.get("Income", type=int),
+        "Age": request.form.get("age", type=int),
+        "Experience": request.form.get("Experience", type=int),
         "Married/Single": Marrital,
         "House_Ownership": House,
         "Car_Ownership": Car,
         "Profession": Profession,
         "City": City,
         "STATE": State,
-        "Current_Job_yrs": request.form.get("Current_Job_yrs"),
-        "Current_House_yrs": request.form.get("Current_House_yrs"),
+        "Current_Job_yrs": request.form.get("Current_Job_yrs", type=int),
+        "Current_House_yrs": request.form.get("Current_House_yrs", type=int),
         "Status": result
     }
     LoanApplication.insert_one(ApplicationForCloud)
@@ -203,31 +215,50 @@ def adminlogin():
 
 @app.route('/adminDashboard', methods=['GET', 'POST'])
 def adminDashboard():
-    if request.method == "POST":
-        loanapp = LoanApplication.find()
-        loanapps = list(loanapp)
+    loanapp = LoanApplication.find()
+    loanapps = list(loanapp)
+    return render_template('adminDashboard.html', loanapps=loanapps)
 
-        return render_template('adminDashboard.html', loanapps=loanapps)
-    else:
-        return redirect(url_for("adminLogin"))
 
 @app.route('/chart', methods=['POST', 'GET'])
 def chart():
     return render_template('chart.html')
+
 
 @app.route('/applicationsearch', methods=['POST', 'GET'])
 def applicationsearch():
     Loandetails1 = {}
     if request.method == "POST":
         email = request.form.get("email")
+        session['searched'] = email
         email_found = list(LoanApplication.find({"Email": email}))
-        # Loandetails = {
-        #     "Fullname": email_found['Fullname'],
-        #     "Email": email_found['Email'],
-        #     "Income":  email_found['Income'],
-        #     "LoanAmount": email_found['LoanAmount'],
-        #     "Status": email_found['Status']
-        # }
+        return render_template('adminSearch.html', Loan=email_found)
+    else:
+        return render_template('adminSearch.html', Loan=Loandetails1)
+
+
+@app.route('/applicationconfirm', methods=['POST', 'GET'])
+def applicationconfirm():
+    Loandetails1 = {}
+    if request.method == 'POST':
+        email = session['searched']
+        LoanApplication.update_one(
+            {"Email": email}, {"$set": {"Status": "Confirm"}}, upsert=False)
+        email_found = list(LoanApplication.find({"Email": email}))
+        return render_template('adminSearch.html', Loan=email_found)
+    else:
+        return render_template('adminSearch.html', Loan=Loandetails1)
+
+
+@app.route('/applicationreject', methods=['POST', 'GET'])
+def applicationreject():
+    Loandetails1 = {}
+    if request.method == 'POST':
+        email = session['searched']
+        LoanApplication.update_one(
+            {"Email": email}, {"$set": {"Status": "Rejected By Bank Admin"}}, upsert=False)
+        email_found = list(LoanApplication.find({"Email": email}))
+        print(email_found)
         return render_template('adminSearch.html', Loan=email_found)
     else:
         return render_template('adminSearch.html', Loan=Loandetails1)
@@ -235,4 +266,3 @@ def applicationsearch():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
