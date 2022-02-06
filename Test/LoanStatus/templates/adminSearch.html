@@ -16,7 +16,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="static/userDashboard.css">
         <link rel="stylesheet" href="static/bodypart.css">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -38,8 +38,8 @@
         </div>
         <input type="checkbox" id="check">
         <label for="check">
-      <i class="fas fa-bars " id="btn"></i>
-      <i class="fas fa-times" id="cancel"></i>
+    <i class="fas fa-bars " id="btn"></i>
+    <i class="fas fa-times" id="cancel"></i>
     </label>
         <div class="sidebar">
             <header>Welcome Admin</header>
@@ -55,46 +55,50 @@
             </div>
         </div>
         <div class="container main">
-            <form action="/applicationsearch" method="POST">
-                <h3>Search for Application by Email</h3>
-                <input type="text" placeholder="Email" name="email">
-                <button type="submit">Search</button>
-            </form>
-        </div>
-        <table class="dataTable">
-            <thead>
-                <tr>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Income</th>
-                    <th>Loan Amount</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    {% for loanapp in Loan %}
+            <div>
+                <form action="/applicationsearch" method="POST">
+                    <div class=" input-group ">
+                        <h3>Search for Application by Email</h3>
+                        <input class="input-lg border-0 rounded-pill" type="text" placeholder="Email" name="email">
+                        <button type="submit" class="btn rounded-pill btn-info">Search</button>
+                    </div>
+                </form>
+            </div>
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <td name="FullName">{{ loanapp.Fullname }}</td>
-                        <td name="email">{{ loanapp.Email }}</td>
-                        <td>{{ loanapp.Income }}</td>
-                        <td>{{ loanapp.LoanAmount }}</td>
-                        <td>{{ loanapp.Status }}</td>
-
-                        <td>
-                            <form action="/applicationconfirm" method="POST">
-                                <button>Confirm</button>
-                            </form>
-                            <form action="/applicationreject" method="POST">
-                                <button> Reject </button>
-                            </form>
-                        </td>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Income</th>
+                        <th>Loan Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
-                    {% endfor %}
-                </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for loanapp in Loan %}
+                        <tr>
+                            <td name="FullName">{{ loanapp.Fullname }}</td>
+                            <td name="email">{{ loanapp.Email }}</td>
+                            <td>{{ loanapp.Income }}</td>
+                            <td>{{ loanapp.LoanAmount }}</td>
+                            <td>{{ loanapp.Status }}</td>
+
+                            <td>
+                                <form action="/applicationconfirm" method="POST">
+                                    <button class="btn rounded-pill btn-block btn-success">Confirm</button>
+                                </form>
+                                <form action="/applicationreject" method="POST">
+                                    <button class="btn  rounded-pill btn-block btn-danger"> Reject </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </body>
 
     </html>
