@@ -28,6 +28,7 @@ def userLog():
         password2 = request.form.get("user[cpassword]")
         user_found = records.find_one({"name": user})
         email_found = records.find_one({"email": email})
+
         if user_found:
             message = 'There already is a user by that name'
             return render_template('userLogin.html', message=message)
@@ -44,8 +45,9 @@ def userLog():
 
             user_data = records.find_one({"email": email})
             new_email = user_data['email']
-
-            return render_template('userDashboard.html', email=new_email)
+            session['Logged_in'] = email_found['email']
+            message = 'Logged In As ' + new_email
+            return render_template('userDashboard.html', email=new_email, message=message)
     return render_template('userLogin.html')
 
 
@@ -55,7 +57,8 @@ def userDashboard():
         email = session["email"]
         user_data = records.find_one({"email": email})
         if user_data['email'] == session["email"]:
-            return render_template('userDashboard.html', email=email)
+            message = 'Logged In As ' + user_data['email']
+            return render_template('userDashboard.html', email=email, message=message)
         else:
             return redirect(url_for("userLogin"))
     else:
