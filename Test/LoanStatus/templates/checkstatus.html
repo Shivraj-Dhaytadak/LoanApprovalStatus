@@ -49,8 +49,8 @@
             <a href="/userDashboard" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
             <!-- Nantar class inactive varun active krjo jeva sab hoin-->
             <a href="/checkstatus"><i class="fas fa-calendar"></i><span>Check status</span></a>
-            <a href="#"><i class="far fa-envelope"></i><span>Contact Us</span></a>
-            <a href="#"><i class="far fa-question-circle"></i><span>About</span></a>
+            <a href="/userDashboard#"><i class="far fa-envelope"></i><span>Contact Us</span></a>
+            <a href="/userDashboard#"><i class="far fa-question-circle"></i><span>About</span></a>
             <a href="/userDashboard#docs"><i class="fa fa-book" aria-hidden="true"></i><span>Required Docs</span></a>
             <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span></a>
 
@@ -89,7 +89,7 @@
                                         <td class="text-center">{{ loanapp.Status }}</td>
                                         <td>
                                             <form action="/checkstatus" method="POST">
-                                                <button class="btn-block btn-danger ">Cancel & Delete</button>
+                                                <button class="btn-block btn-danger rounded-pill ">Cancel & Delete</button>
                                             </form>
                                         </td>
                                     </tr>

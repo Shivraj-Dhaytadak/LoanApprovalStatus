@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="static/userDashboard.css">
     <link rel="stylesheet" href="static/bodypart.css">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -20,7 +19,7 @@
             <ul>
                 <li class="logo"> <i class="fa fa-university" aria-hidden="true"></i> Bank</li>
                 <!-- Nantar logo taku saddya rau de class logo-->
-                <li class="items"><a href="#"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
+                <li class="items"><a href="/userDashboard#"><i class="fa fa-home fa-xs" aria-hidden="true"></i> Home</a></li>
                 <li class="items"><a href="/loanapply"><i class="fa fa-check-circle fa-xs" aria-hidden="true"></i> Apply</a></li>
                 <li class="items"> <a href="/logout"><i class="fa fa-power-off fa-xs"></i> Logout</a> </li>
             </ul>
@@ -33,7 +32,7 @@
     </label>
     <div class="sidebar">
         <header class=" text-white-50 ">{{message }}</header>
-        <a href="#" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
+        <a href="/userDashboard#" class="active"><i class="fas fa-credit-card"></i><span>User Dashboard</span></a>
         <!-- Nantar class inactive varun active krjo jeva sab hoin-->
         <a href="/checkstatus"><i class="fas fa-calendar"></i><span>Check status</span></a>
         <a href="#"><i class="far fa-envelope"></i><span>Contact Us</span></a>
@@ -66,12 +65,18 @@
             <div class="carousel-inner">
 
                 <div class="item active">
-                    <img src="static/2ndbanner.jpeg" alt="/Test/LoanStatus/static/firstbanner.jpeg" style="width:100%;">
-                    <div class="carousel-caption"></div>
+                    <img src="static/img_3.jpg" alt="/Test/LoanStatus/static/firstbanner.jpeg" style="width:100%;">
+                    <div class="carousel-caption">
+                        <div>
+                            <h2 class=" card-header ">01 . Need Financial Support </h2>
+                            <p> Get Personalized Loan <br> swipe next get more details
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="item">
-                    <img src="static/firstbanner.jpeg" style="width:100%;">
+                    <img src="static/img_2.jpg" style="width:100%;">
                     <div class="carousel-caption">
                         <h3>Happy New Year</h3>
                         <p>keep the spirt</p>
@@ -79,7 +84,7 @@
                 </div>
 
                 <div class="item">
-                    <img src="static/firstbanner.jpeg" alt="New York" style="width:100%;">
+                    <img src="static/img_1.jpg" alt="New York" style="width:100%;">
                     <div class="carousel-caption"></div>
                 </div>
 
