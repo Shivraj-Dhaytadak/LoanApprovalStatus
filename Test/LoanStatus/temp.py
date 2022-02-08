@@ -133,7 +133,7 @@ def predict():
     ApplicationForCloud = {
         "Fullname": request.form.get("fullname"),
         "Email": request.form.get("email"),
-        "LoanAmount": request.form.get("LoanAmount"),
+        "LoanAmount": request.form.get("LoanAmount", type=int),
         "Income": request.form.get("Income", type=int),
         "Age": request.form.get("age", type=int),
         "Experience": request.form.get("Experience", type=int),
