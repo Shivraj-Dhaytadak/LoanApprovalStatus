@@ -4,7 +4,7 @@ import pymongo
 import bcrypt
 import pickle
 
-from telegram import message
+# from telegram import message
 import Converter
 import numpy as np
 app = Flask(__name__)
